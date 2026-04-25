@@ -20,7 +20,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {/* Animated Background Layers */}
+        <div className="global-bg">
+          <div className="orb orb-1"></div>
+          <div className="orb orb-2"></div>
+          <div className="orb orb-3"></div>
+          <div className="noise-overlay"></div>
+        </div>
+        
+        {/* Main Application Content */}
+        <div className="app-wrapper">
+          {children}
+        </div>
+      </body>
     </html>
   )
 }
