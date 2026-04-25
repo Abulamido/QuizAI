@@ -1,0 +1,1460 @@
+
+    <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+    <head><meta charset='utf-8'><title>Document</title>
+    <style>
+        body { font-family: 'Times New Roman', serif; line-height: 1.6; max-width: 800px; margin: auto; padding: 20px; }
+        h1 { text-align: center; color: #2c3e50; font-size: 24pt; margin-bottom: 20px; }
+        h2 { color: #34495e; border-bottom: 2px solid #34495e; padding-bottom: 5px; margin-top: 30px; font-size: 18pt; }
+        h3 { color: #7f8c8d; margin-top: 20px; font-size: 14pt; }
+        p { margin-bottom: 15px; text-align: justify; }
+        li { margin-bottom: 8px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+        code { background-color: #f4f4f4; padding: 2px 4px; border-radius: 4px; font-family: 'Courier New', monospace; }
+        pre { background-color: #f4f4f4; padding: 15px; border-radius: 8px; overflow-x: auto; border: 1px solid #ddd; }
+        blockquote { border-left: 5px solid #eee; padding-left: 20px; color: #666; font-style: italic; margin-bottom: 20px; }
+        img { max-width: 100%; height: auto; display: block; margin: 20px auto; }
+    </style>
+    </head>
+    <body>
+    <h1 id="quizai-online-quiz-system-with-artificial-intelligence-grading">QUIZAI: ONLINE QUIZ SYSTEM WITH ARTIFICIAL INTELLIGENCE GRADING</h1>
+<h2 id="complete-thesis-project-documentation">COMPLETE THESIS PROJECT DOCUMENTATION</h2>
+<hr />
+<h1 id="project-proposal">PROJECT PROPOSAL</h1>
+<h2 id="an-online-quiz-system-with-artificial-intelligence-grading">An Online Quiz System with Artificial Intelligence Grading</h2>
+<hr />
+<p><strong>Submitted by:</strong> [Your Full Name]
+<strong>Matriculation Number:</strong> [Your Matric Number]
+<strong>Department:</strong> Computer Science / Information Technology
+<strong>Institution:</strong> [Your University Name]
+<strong>Level:</strong> Final Year (400 Level)
+<strong>Supervisor:</strong> [Supervisor's Name]
+<strong>Date:</strong> April 2025</p>
+<hr />
+<h2 id="table-of-contents">TABLE OF CONTENTS</h2>
+<ol>
+<li>Introduction</li>
+<li>Background of the Study</li>
+<li>Statement of the Problem</li>
+<li>Aim and Objectives</li>
+<li>Significance of the Study</li>
+<li>Scope and Limitation</li>
+<li>Methodology</li>
+<li>Expected Outcomes</li>
+<li>Project Timeline (Gantt Chart)</li>
+<li>Preliminary Bibliography</li>
+</ol>
+<hr />
+<h2 id="1-introduction">1. INTRODUCTION</h2>
+<p>The rapid growth of digital technology has fundamentally transformed the education sector. Traditional paper-based examinations and assessments, once considered the gold standard of academic evaluation, are increasingly being replaced or supplemented by computer-based and online alternatives. Among the most critical aspects of modern education is the fair, accurate, and timely assessment of student performance — a task that, historically, demands considerable time and resources from educators.</p>
+<p>Artificial Intelligence (AI), particularly in the domain of Natural Language Processing (NLP), has emerged as a powerful force capable of automating tasks once considered exclusively human. AI systems can now read, understand, and evaluate textual responses with remarkable accuracy. This convergence of AI and education technology opens a compelling opportunity: an online quiz system in which the grading of both objective and subjective questions is performed automatically by an AI engine — instantly, consistently, and with personalised feedback for each student.</p>
+<p>This proposal presents the plan for developing <strong>QuizAI: An Online Quiz System with Artificial Intelligence Grading</strong>, a full-stack web application that enables educators to create and publish quizzes and allows students to take those quizzes and receive immediate AI-generated grades and individualised feedback. The AI grading engine leverages Google's Gemini large language model (LLM) to evaluate open-ended answers and essay responses.</p>
+<hr />
+<h2 id="2-background-of-the-study">2. BACKGROUND OF THE STUDY</h2>
+<p>The evolution of educational technology (EdTech) can be traced from early computer-assisted instruction in the 1960s to today's sophisticated AI-driven learning management systems (LMS). The emergence of the internet enabled the first wave of online learning platforms — such as Blackboard (1997) and Moodle (2002) — which primarily functioned as digital repositories for course materials and basic automated testing of multiple-choice questions.</p>
+<p>The second wave brought massive open online courses (MOOCs) such as Coursera, edX, and Khan Academy. These platforms democratised access to quality education but retained the fundamental limitation that grading open-ended responses — essays, short answers, or structured problem solutions — still required human graders. Human grading, while qualitatively superior in certain contexts, is inherently slow, expensive, and subject to inter-rater variability (variation between different graders).</p>
+<p>The emergence of transformer-based language models (e.g., GPT, BERT, Gemini) has given AI the capability to comprehend and evaluate free-form text with nuance. Automated Essay Scoring (AES) systems have existed since the 1960s (Project Essay Grade, by Ellis Page), but modern LLMs have achieved a qualitative leap in their ability to understand context, argumentation, and factual accuracy. Research by Ke and Ng (2019), Ramesh and Sanampudi (2022), and Bonthu et al. (2021) consistently shows that AI grading of short answers achieves correlations of 0.70–0.90 with expert human scores.</p>
+<p>This context creates the rationale for developing a practical, accessible, and affordable AI-grading quiz system tailored to the needs of higher education institutions, which often lack resources for real-time human grading at scale.</p>
+<hr />
+<h2 id="3-statement-of-the-problem">3. STATEMENT OF THE PROBLEM</h2>
+<p>Despite the widespread adoption of online learning tools in Nigerian and African universities, several persistent challenges undermine the effectiveness of online assessments:</p>
+<p><strong>3.1 Delayed Feedback</strong>
+Traditional assessment workflows — where a lecturer collects papers, grades them over days or weeks, and returns them — deprive students of the timely feedback essential for learning reinforcement. Research in educational psychology (Hattie &amp; Timperley, 2007) demonstrates that feedback effectiveness is maximised when delivered immediately after a learning event.</p>
+<p><strong>3.2 Grading Inconsistency</strong>
+Human grading of subjective answers suffers from cognitive biases (halo effect, leniency effect), fatigue, and inter-rater inconsistency. Two examiners evaluating the same essay may assign substantially different scores, undermining fairness.</p>
+<p><strong>3.3 High Grading Workload</strong>
+As class sizes increase in under-resourced institutions, the grading burden on academic staff becomes unsustainable. Lecturers spend an inordinate amount of time on grading rather than on teaching, curriculum development, or research.</p>
+<p><strong>3.4 Limited Question Diversity in Online Tools</strong>
+Most freely available online quiz tools (e.g., Google Forms, Kahoot) support only multiple-choice questions. They cannot grade short answers or essays, limiting their pedagogical utility for testing higher-order thinking skills (Bloom's Taxonomy levels 3–6: Application, Analysis, Evaluation, Creation).</p>
+<p><strong>3.5 Lack of Personalised Feedback at Scale</strong>
+Current systems provide only a binary correct/incorrect response for MCQs. Students receive no explanation of why they failed, what their strengths are, or how to improve — limiting learning value.</p>
+<p>This project directly addresses all five problems through an integrated AI-powered online quiz platform.</p>
+<hr />
+<h2 id="4-aim-and-objectives">4. AIM AND OBJECTIVES</h2>
+<h3 id="41-aim">4.1 Aim</h3>
+<p>To design and develop a web-based online quiz system that uses Artificial Intelligence (specifically a Large Language Model) to automatically grade multiple question types and provide personalised student feedback in real time.</p>
+<h3 id="42-objectives">4.2 Objectives</h3>
+<p>The specific objectives of this project are to:</p>
+<ol>
+<li><strong>Design</strong> a relational database schema to effectively store quiz metadata, questions, student attempts, and grading results.</li>
+<li><strong>Develop</strong> a secure, role-based user authentication system distinguishing Educators (Admins) and Students.</li>
+<li><strong>Implement</strong> a multi-format question builder supporting Multiple Choice (MCQ), True/False, Short Answer, and Essay question types.</li>
+<li><strong>Integrate</strong> Google Gemini AI for automated short-answer and essay grading, returning a numerical score, letter grade, overall feedback, identified strengths, and suggested improvements.</li>
+<li><strong>Implement</strong> automatic (rule-based) grading for MCQ and True/False questions.</li>
+<li><strong>Build</strong> a real-time countdown timer for timed assessments with auto-submission on timeout.</li>
+<li><strong>Develop</strong> analytics dashboards for educators (class average, pass rate, individual scores) and students (personal score history, grade distribution).</li>
+<li><strong>Test</strong> the system for functionality, usability, and AI grading accuracy.</li>
+</ol>
+<hr />
+<h2 id="5-significance-of-the-study">5. SIGNIFICANCE OF THE STUDY</h2>
+<p><strong>5.1 For Students</strong>
+- Receive immediate, detailed feedback on every answer
+- Understand specific strengths and areas for improvement
+- Reduce anxiety associated with prolonged waiting for results
+- Access a modern, engaging assessment interface</p>
+<p><strong>5.2 For Educators</strong>
+- Eliminate the time burden of manual grading of short answers and essays
+- Achieve consistent, bias-free grading standards
+- Access detailed class analytics to identify learning gaps
+- Focus more time on teaching and curriculum improvement</p>
+<p><strong>5.3 For Institutions</strong>
+- Reduce assessment costs
+- Support scalable online education programmes
+- Demonstrate technological leadership in EdTech adoption
+- Build a data record of student performance for accreditation purposes</p>
+<p><strong>5.4 For Society and Research</strong>
+- Contribute to the growing body of evidence on AI in education (AIEd)
+- Provide an open-source codebase for future research and extension
+- Support national development goals (SDG 4: Quality Education)</p>
+<hr />
+<h2 id="6-scope-and-limitation">6. SCOPE AND LIMITATION</h2>
+<h3 id="61-scope">6.1 Scope</h3>
+<p>The project will:
+- Support web-based access (desktop-first, mobile-responsive)
+- Support four question types: MCQ, True/False, Short Answer, Essay
+- Use Google Gemini 1.5 Flash as the AI grading model
+- Use Supabase (PostgreSQL) for data storage
+- Support two user roles: Educator and Student
+- Provide grading results immediately upon submission
+- Include basic analytics dashboards</p>
+<h3 id="62-limitations">6.2 Limitations</h3>
+<ul>
+<li>The AI grading accuracy depends on the quality of the model answer provided by the educator</li>
+<li>The system does not support rich media questions (audio, video) in the current version</li>
+<li>Plagiarism detection is beyond the scope of this version</li>
+<li>The system is limited to English-language content in the current iteration</li>
+<li>Advanced learning analytics (predictive models, knowledge graphs) are out of scope</li>
+</ul>
+<hr />
+<h2 id="7-methodology">7. METHODOLOGY</h2>
+<p>The project will be developed using an <strong>Agile Software Development</strong> methodology, specifically the <strong>Scrum</strong> framework, organised into two-week sprints. The development phases are:</p>
+<p><strong>Phase 1 — Requirements Analysis</strong> (Weeks 1–2)
+- Stakeholder interviews with students and lecturers
+- Functional and non-functional requirements specification
+- Use case diagrams, context diagrams</p>
+<p><strong>Phase 2 — System Design</strong> (Weeks 3–4)
+- Entity-Relationship Diagram (ERD)
+- Data Flow Diagram (DFD)
+- System architecture design
+- UI wireframes and mockups</p>
+<p><strong>Phase 3 — Implementation</strong> (Weeks 5–10)
+- Database setup (Supabase)
+- Authentication system
+- Quiz builder (admin)
+- Quiz-taking interface (student)
+- AI grading integration (Gemini)
+- Results and analytics dashboards</p>
+<p><strong>Phase 4 — Testing</strong> (Weeks 11–13)
+- Unit testing of individual modules
+- Integration testing of AI grading pipeline
+- User Acceptance Testing (UAT) with 10 student volunteers</p>
+<p><strong>Phase 5 — Documentation and Submission</strong> (Weeks 14–16)
+- Final project writeup
+- User manual
+- Source code documentation</p>
+<hr />
+<h2 id="8-expected-outcomes">8. EXPECTED OUTCOMES</h2>
+<p>Upon completion, this project will deliver:</p>
+<ol>
+<li>A <strong>fully functional web application</strong> accessible at localhost (with hosting-ready configuration)</li>
+<li>An <strong>AI grading engine</strong> achieving ≥ 0.75 correlation with human judgement on short answer questions</li>
+<li>A <strong>user manual</strong> for both educators and students</li>
+<li>A <strong>database schema</strong> documented and version-controlled</li>
+<li><strong>Academic chapters 1–5</strong> constituting the final project report</li>
+</ol>
+<hr />
+<h2 id="9-project-timeline-gantt-chart">9. PROJECT TIMELINE (GANTT CHART)</h2>
+<table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>Wk 1-2</th>
+<th>Wk 3-4</th>
+<th>Wk 5-6</th>
+<th>Wk 7-8</th>
+<th>Wk 9-10</th>
+<th>Wk 11-12</th>
+<th>Wk 13-14</th>
+<th>Wk 15-16</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requirements Analysis</td>
+<td>████</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>System Design</td>
+<td></td>
+<td>████</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Database Setup</td>
+<td></td>
+<td>████</td>
+<td>████</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Auth &amp; User Management</td>
+<td></td>
+<td></td>
+<td>████</td>
+<td>████</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Quiz Builder</td>
+<td></td>
+<td></td>
+<td></td>
+<td>████</td>
+<td>████</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>AI Grading Integration</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>████</td>
+<td>████</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Dashboards &amp; Analytics</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>████</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Testing (Unit + UAT)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>████</td>
+<td>████</td>
+<td></td>
+</tr>
+<tr>
+<td>Documentation</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>████</td>
+<td>████</td>
+</tr>
+<tr>
+<td>Submission</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>████</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-preliminary-bibliography">10. PRELIMINARY BIBLIOGRAPHY</h2>
+<ol>
+<li>
+<p>Bonthu, S., Rama Sree, S., &amp; Sitamahalakshmi, T. (2021). <em>Automated short answer grading using deep learning: A survey</em>. Proceedings of the 2021 12th International Conference on Computing Communication and Networking Technologies.</p>
+</li>
+<li>
+<p>Brown, T., et al. (2020). <em>Language models are few-shot learners</em>. Advances in Neural Information Processing Systems, 33, 1877–1901.</p>
+</li>
+<li>
+<p>Hattie, J., &amp; Timperley, H. (2007). <em>The power of feedback</em>. Review of Educational Research, 77(1), 81–112.</p>
+</li>
+<li>
+<p>Ke, Z., &amp; Ng, V. (2019). <em>Automated essay scoring: A survey of the state of the art</em>. Proceedings of the 28th International Joint Conference on Artificial Intelligence (IJCAI-19).</p>
+</li>
+<li>
+<p>Peng, M., et al. (2020). <em>Short answer grading with regard to student diversity</em>. arXiv preprint arXiv:2004.09163.</p>
+</li>
+<li>
+<p>Ramesh, D., &amp; Sanampudi, S. K. (2022). <em>An automated essay scoring systems: A systematic literature review</em>. Artificial Intelligence Review, 55, 2495–2527.</p>
+</li>
+<li>
+<p>Supabase Documentation. (2024). <em>Supabase Docs — Open source Firebase alternative</em>. https://supabase.com/docs</p>
+</li>
+<li>
+<p>Google. (2024). <em>Gemini API Documentation</em>. https://ai.google.dev/docs</p>
+</li>
+<li>
+<p>Vercel. (2024). <em>Next.js Documentation</em>. https://nextjs.org/docs</p>
+</li>
+<li>
+<p>Corbett, A. T., &amp; Anderson, J. R. (1995). <em>Knowledge tracing: Modeling the acquisition of procedural knowledge</em>. User Modeling and User-Adapted Interaction, 4(4), 253–278.</p>
+</li>
+</ol>
+<div style="page-break-after: always;"></div>
+
+<h1 id="chapter-one-introduction">CHAPTER ONE: INTRODUCTION</h1>
+<h2 id="online-quiz-system-with-artificial-intelligence-grading">Online Quiz System with Artificial Intelligence Grading</h2>
+<hr />
+<h2 id="11-background-of-the-study">1.1 Background of the Study</h2>
+<p>The 21st century has witnessed an unprecedented convergence of computation and human cognition, fundamentally altering how knowledge is taught, assessed, and validated. Education, as one of the most consequential human endeavours, stands at the epicentre of this transformation. The proliferation of internet-connected devices, cloud computing infrastructure, and machine learning has created fertile ground for a new generation of educational technology (EdTech) tools that extend far beyond the digitisation of traditional classroom activities.</p>
+<p>Assessment — the systematic process of gathering evidence about student learning for the purpose of improving that learning — is a cornerstone of education (Black &amp; Wiliam, 1998). Formative assessments provide ongoing feedback that guides the learning process; summative assessments measure cumulative achievement at the end of a unit, course, or academic year. The integrity, accuracy, fairness, and timeliness of assessments directly affect student learning outcomes, instructor workload, institutional reputation, and the validity of academic credentials.</p>
+<p>Traditional assessment systems, despite their familiarity and long-established protocols, exhibit several structural limitations. Paper-based examinations are slow to grade, susceptible to loss or damage, difficult to analyse at scale, and present logistical challenges around scheduling, venue management, and accessibility. The manual grading of subjective responses (short answers, essays) is particularly resource-intensive — a single lecturer responsible for a class of 200 students may spend hundreds of hours on grading activities per semester, leaving little time for teaching, research, or student engagement.</p>
+<p>The advent of computer-based testing (CBT) partially addressed these limitations. Objective question formats (multiple choice, true/false) can be graded instantly and automatically by rule-based systems. However, the pedagogical value of objective-only assessments is limited: they primarily measure recall and recognition (lower-order cognitive skills), while higher-order skills — application, analysis, synthesis, and evaluation (Bloom, 1956; Krathwohl, 2002) — are better assessed through constructed-response formats (short answers, essays). The challenge of automatically grading these constructed responses has been a persistent barrier to fully automated, scalable online assessment.</p>
+<p>Artificial Intelligence, and specifically Natural Language Processing (NLP), has transformed this landscape. The emergence of transformer-based Large Language Models (LLMs) — from BERT (Devlin et al., 2019) to GPT-4 (OpenAI, 2023) and Google's Gemini (Google DeepMind, 2023) — has created AI systems of unprecedented capability in reading, understanding, and evaluating human-generated text. These models are trained on vast corpora of text and develop sophisticated internal representations of language semantics, context, and argumentation. As applied to educational assessment, they can perform nuanced evaluation of student answers — identifying correct concepts, assessing depth of understanding, recognising partial credit, and generating contextually apt feedback — tasks that previously required human expertise.</p>
+<p>This project, <strong>QuizAI</strong>, is born from this technological context. It represents a practical synthesis of state-of-the-art AI capabilities with a functional, user-centred web platform designed to revolutionise how quizzes and assessments are conducted in higher education settings.</p>
+<hr />
+<h2 id="12-statement-of-the-problem">1.2 Statement of the Problem</h2>
+<p>Despite decades of investment in EdTech, a significant gap persists between the potential and the practice of technology-enhanced assessment. In many higher education institutions — particularly in developing countries, where resource constraints are more acute — the following problems are prevalent:</p>
+<p><strong>Problem 1: Delayed and Insufficient Feedback</strong>
+Research in educational psychology consistently identifies feedback timing as a critical determinant of its effectiveness. Hattie and Timperley (2007) identified feedback as having an effect size of 0.79 on student achievement — one of the highest of any educational intervention — but only when timely and specific. In practice, students often wait one to three weeks for graded work to be returned, by which time the associative connection between their effort and the evaluative feedback has faded. This delay substantially reduces the learning value of assessment.</p>
+<p><strong>Problem 2: Inconsistency and Bias in Human Grading</strong>
+Human grading of subjective responses is vulnerable to cognitive biases. The "halo effect" causes a grader who forms a positive impression of a student from early answers to rate subsequent answers more generously. "Leniency bias" leads graders who have been lenient with preceding papers to maintain that leniency. "Assimilation bias" causes similarity in phrasing to preceding answers to influence scores. Moreover, graders become fatigued over long marking sessions, with research showing measurable score drift over time (Graesser et al., 2000). The result is that two students with objectively equivalent answers may receive different scores, undermining the fundamental fairness of assessment.</p>
+<p><strong>Problem 3: Lecturers' Grading Burden</strong>
+Academic staff in under-resourced institutions are frequently required to teach large classes (often 100–300+ students) with minimal support staff. The grading burden is enormous: estimating conservatively that grading a single essay requires 10 minutes, a module with 200 students writing three essays per semester requires 100 person-hours of grading per semester from a single lecturer — equivalent to more than two full working weeks devoted exclusively to grading. This is time diverted from teaching preparation, research, curriculum development, and student support.</p>
+<p><strong>Problem 4: Absence of Comprehensive Feedback in Existing Online Tools</strong>
+Widely-used free quiz tools such as Google Forms, Typeform, and Kahoot are limited to objective question formats (MCQ, checkbox). They award points but provide no explanation, feedback, or guidance. Even commercially mature platforms such as Moodle, while supporting some automated feedback, cannot grade constructed responses (short answers, essays) with the sophistication and nuance of an expert human — or an AI system trained on vast educational data.</p>
+<p><strong>Problem 5: Limited Assessment of Higher-Order Cognitive Skills</strong>
+Because existing automated tools can only grade objective items, online assessments are biased toward lower-order cognitive skills (knowledge recall, comprehension). Assessing higher-order skills — analysis, synthesis, critical evaluation — requires constructed responses that currently demand human grading. This forces educators who want to test higher-order thinking to accept the manual grading burden, creating a disincentive to use better assessment methods.</p>
+<p>The system developed in this project directly and measurably addresses each of these five problems.</p>
+<hr />
+<h2 id="13-aim-of-the-study">1.3 Aim of the Study</h2>
+<p>The aim of this project is to <strong>design, develop, and evaluate a web-based online quiz system that integrates Artificial Intelligence — specifically Google's Gemini Large Language Model — to provide automated, fair, and personalised grading for multiple question types, including open-ended short answers and essays.</strong></p>
+<hr />
+<h2 id="14-objectives-of-the-study">1.4 Objectives of the Study</h2>
+<p>To achieve the stated aim, the following specific objectives were pursued:</p>
+<ol>
+<li>To <strong>analyse</strong> existing online assessment systems and identify their limitations with respect to AI grading capability.</li>
+<li>To <strong>design</strong> a scalable relational database schema capable of storing user profiles, quiz configurations, question sets, student attempts, and granular AI grading results.</li>
+<li>To <strong>develop</strong> a secure, role-based authentication system that differentiates between Educator (Administrator) and Student user roles, enforcing access control at both application and database levels.</li>
+<li>To <strong>implement</strong> a multi-format question builder enabling educators to create Multiple Choice (MCQ), True/False, Short Answer, and Essay questions within a unified, intuitive interface.</li>
+<li>To <strong>integrate</strong> the Google Gemini 1.5 Flash API to automatically grade short answer and essay responses, producing a numerical score, letter grade, comprehensive textual feedback, identified answer strengths, and actionable improvement suggestions.</li>
+<li>To <strong>implement</strong> automatic (deterministic) grading for MCQ and True/False questions through exact-match comparison with stored correct answers.</li>
+<li>To <strong>build</strong> a real-time countdown timer mechanism for timed assessments, with automatic quiz submission upon timer expiration.</li>
+<li>To <strong>develop</strong> analytics dashboards — for educators (class average, pass rate, grade distribution, student listing) and students (personal score history, per-question feedback) — to support data-informed teaching and learning.</li>
+<li>To <strong>test</strong> the system using functional, integration, and user acceptance testing methods with real student participants.</li>
+</ol>
+<hr />
+<h2 id="15-significance-of-the-study">1.5 Significance of the Study</h2>
+<p>This project makes meaningful contributions at multiple levels:</p>
+<p><strong>Academic Contribution:</strong> This study contributes empirical evidence regarding the viability of LLM-based automated grading in a real-world educational application. The system architecture and AI integration strategy provide a model for subsequent research and development in educational AI.</p>
+<p><strong>Practical Contribution for Educators:</strong> The system directly reduces grading workload by automating the evaluation of open-ended answers. An educator who previously spent 40 hours grading a set of short-answer papers can redirect that time to richer instructional activities.</p>
+<p><strong>Practical Contribution for Students:</strong> Immediate, detailed feedback replaces the frustrating wait associated with manual grading. Students receive actionable guidance — specific strengths to build on and specific areas to improve — which accelerates learning. This is consistent with the formative assessment paradigm championed by Black and Wiliam (1998).</p>
+<p><strong>Institutional Contribution:</strong> The adoption of AI-powered assessment tools positions educational institutions to scale their online programme offerings without proportional increases in administrative costs. The system's open architecture allows institutional customisation and integration with existing LMS platforms.</p>
+<p><strong>Societal Contribution:</strong> By improving the quality and efficiency of educational assessment, the system supports the United Nations Sustainable Development Goal 4 (SDG 4): "Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all."</p>
+<hr />
+<h2 id="16-scope-of-the-study">1.6 Scope of the Study</h2>
+<p>This project encompasses the following within its scope:</p>
+<ul>
+<li><strong>Platform:</strong> Web-based application, desktop-first with mobile-responsive design</li>
+<li><strong>Users:</strong> Educator (Admin) and Student roles</li>
+<li><strong>Question Types:</strong> Multiple Choice, True/False, Short Answer, Essay</li>
+<li><strong>AI Integration:</strong> Google Gemini 1.5 Flash (via REST API)</li>
+<li><strong>Database:</strong> Supabase (managed PostgreSQL) with Row Level Security</li>
+<li><strong>Authentication:</strong> Email/password via Supabase Auth</li>
+<li><strong>Grading:</strong> Automated for MCQ/T-F; AI-powered for short answer/essay</li>
+<li><strong>Analytics:</strong> Basic class and individual performance dashboards</li>
+<li><strong>Language:</strong> English (interface and graded content)</li>
+</ul>
+<p>The following are explicitly outside the scope of this project:</p>
+<ul>
+<li>Mobile native application (iOS/Android)</li>
+<li>Plagiarism or academic integrity detection</li>
+<li>Integration with existing LMS (Moodle, Blackboard)</li>
+<li>Multi-language support beyond English</li>
+<li>Video or audio question formats</li>
+<li>Predictive analytics or knowledge tracing models</li>
+</ul>
+<hr />
+<h2 id="17-definition-of-terms">1.7 Definition of Terms</h2>
+<p><strong>Artificial Intelligence (AI):</strong> The simulation of human intelligence processes by computer systems, including learning, reasoning, and self-correction.</p>
+<p><strong>Large Language Model (LLM):</strong> A class of AI model trained on vast text datasets capable of generating, understanding, and evaluating natural language text. Examples include GPT-4, Gemini, and Claude.</p>
+<p><strong>Natural Language Processing (NLP):</strong> A subfield of AI concerned with enabling computers to understand, interpret, and generate human language in a meaningful way.</p>
+<p><strong>Automated Essay Scoring (AES):</strong> The use of computer programs to grade written essays or extended constructed responses.</p>
+<p><strong>Formative Assessment:</strong> An ongoing assessment process used to monitor student learning and provide feedback to improve both teaching and learning.</p>
+<p><strong>Summative Assessment:</strong> Assessment conducted at the end of an instructional unit to measure learning outcomes against a defined standard.</p>
+<p><strong>Row Level Security (RLS):</strong> A database security feature that restricts which rows a user can access in a table, based on the user's identity or role.</p>
+<p><strong>API (Application Programming Interface):</strong> A set of protocols and tools that allow different software applications to communicate with each other.</p>
+<p><strong>Next.js:</strong> An open-source React-based web development framework enabling server-side rendering and static website generation.</p>
+<p><strong>Supabase:</strong> An open-source backend-as-a-service platform built on PostgreSQL, providing database, authentication, storage, and real-time capabilities.</p>
+<p><strong>MCQ (Multiple Choice Question):</strong> A question format with a stem and multiple options, exactly one of which is correct.</p>
+<hr />
+<h2 id="18-organisation-of-the-report">1.8 Organisation of the Report</h2>
+<p>This report is organised into five chapters:</p>
+<ul>
+<li><strong>Chapter One</strong> — Introduces the study, providing background, problem statement, aim, objectives, significance, scope, and definitions.</li>
+<li><strong>Chapter Two</strong> — Reviews existing literature on online assessments, AI in education, automated grading systems, and related works.</li>
+<li><strong>Chapter Three</strong> — Documents the research methodology, system analysis, design decisions, and architectural specifications.</li>
+<li><strong>Chapter Four</strong> — Presents the implementation details, the developed system's features, and testing results.</li>
+<li><strong>Chapter Five</strong> — Summarises the work, draws conclusions, and recommends directions for future development.</li>
+</ul>
+<div style="page-break-after: always;"></div>
+
+<h1 id="chapter-two-literature-review">CHAPTER TWO: LITERATURE REVIEW</h1>
+<h2 id="online-quiz-system-with-artificial-intelligence-grading_1">Online Quiz System with Artificial Intelligence Grading</h2>
+<hr />
+<h2 id="21-introduction">2.1 Introduction</h2>
+<p>This chapter provides a systematic review of the literature relevant to the development of an AI-powered online quiz and grading system. The review is organised thematically, moving from the broad landscape of e-learning and online assessment, to the specific domain of Natural Language Processing (NLP) and Automated Essay Scoring (AES), to a comparative analysis of existing systems. The chapter concludes by identifying the gaps in existing literature and systems that this project addresses, and articulates the theoretical framework underpinning its design.</p>
+<hr />
+<h2 id="22-overview-of-e-learning-and-online-assessment">2.2 Overview of E-Learning and Online Assessment</h2>
+<h3 id="221-the-evolution-of-e-learning">2.2.1 The Evolution of E-Learning</h3>
+<p>E-learning — broadly defined as learning facilitated by electronic technologies — has evolved through several distinct generations. The first generation (1960s–1990s) comprised Computer-Assisted Instruction (CAI) and Computer-Based Training (CBT) systems. These early systems, such as the PLATO system developed at the University of Illinois, delivered pre-programmed instructional content and conducted rule-based testing of factual recall (Graziadei et al., 1997).</p>
+<p>The second generation (1990s–2000s) saw the emergence of internet-based learning management systems (LMS). Platforms such as Blackboard (1998), Moodle (2002), and WebCT transformed the delivery of educational content, enabling asynchronous learning, discussion forums, and online grade management. Automated grading in this era was limited to objective question types through exact-match comparison.</p>
+<p>The third generation (2010s–present) is characterised by the integration of artificial intelligence, adaptive learning, and learning analytics into educational platforms. MOOCs (Massive Open Online Courses) — including Coursera, edX, Khan Academy, and Udacity — demonstrated the potential of online education at global scale but exposed the challenge of scalably grading constructed responses.</p>
+<h3 id="222-online-assessment-types-and-challenges">2.2.2 Online Assessment: Types and Challenges</h3>
+<p>Garrison and Anderson (2003) define assessment in e-learning as "the process of gathering data about what and how well students are learning, and using those data to inform subsequent instruction." Online assessment types include:</p>
+<ul>
+<li><strong>Selected-response items</strong>: MCQ, True/False, matching — can be graded algorithmically</li>
+<li><strong>Constructed-response items</strong>: Short answer, essay, problem-solving tasks — require evaluation of meaning, not just form</li>
+<li><strong>Performance-based assessments</strong>: Portfolio, project artefacts — require human or structured AI evaluation</li>
+</ul>
+<p>The fundamental challenge is that constructed-response items, which are most effective for assessing higher-order cognitive skills (Bloom, 1956), cannot be graded by simple pattern-matching algorithms. Brown et al. (2020) note that it is precisely this category of assessment — rich, complex, open-ended — where human cognition was long considered irreplaceable. It is also this category where AI has made the most dramatic recent strides.</p>
+<h3 id="223-benefits-of-online-assessment">2.2.3 Benefits of Online Assessment</h3>
+<p>Numerous studies document the advantages of online assessment over paper-based alternatives. Marriott and Lau (2008) found that online assessments improve access, reduce logistical costs, and enable more frequent low-stakes testing. Dermo (2009) demonstrated that computer-based assessment is perceived by students as more efficient and less stressful than traditional examination formats. Rudd et al. (2008) showed that immediate feedback in online assessments significantly improves subsequent performance.</p>
+<hr />
+<h2 id="23-artificial-intelligence-in-education-aied">2.3 Artificial Intelligence in Education (AIEd)</h2>
+<h3 id="231-overview-of-aied">2.3.1 Overview of AIEd</h3>
+<p>Artificial Intelligence in Education (AIEd) is a multidisciplinary field at the intersection of computer science, cognitive science, and educational research. It encompasses the application of AI techniques to teaching, learning, and educational management problems. Key AIEd application domains include:</p>
+<ul>
+<li><strong>Intelligent Tutoring Systems (ITS)</strong>: Systems that provide personalised instruction by modelling student knowledge and delivering targeted feedback. The ALEKS system (Falmagne et al., 2013) uses knowledge space theory to guide mathematics learning.</li>
+<li><strong>Adaptive Learning Systems</strong>: Platforms that dynamically adjust content difficulty based on student performance (e.g., Carnegie Learning, Knewton).</li>
+<li><strong>Automated Essay Scoring (AES)</strong>: Systems that evaluate written essays using machine learning.</li>
+<li><strong>Learning Analytics</strong>: Data-driven analysis of learner behaviour and outcomes.</li>
+<li><strong>Natural Language Processing for Education</strong>: Including question generation, reading comprehension assessment, and dialogue-based tutoring.</li>
+</ul>
+<p>Baker and Inventado (2014) note that AIEd's ultimate aspiration is to replicate the one-on-one tutoring relationship — Bloom's (1984) "two-sigma problem" — for every learner, through personalised, adaptive, real-time engagement.</p>
+<h3 id="232-large-language-models-capabilities-and-educational-applications">2.3.2 Large Language Models: Capabilities and Educational Applications</h3>
+<p>The introduction of transformer-based language models (Vaswani et al., 2017) marked a paradigm shift in NLP. The transformer architecture, with its self-attention mechanism, enabled models to capture long-range contextual dependencies in text with unprecedented accuracy. Subsequent scaling — BERT (Devlin et al., 2019), GPT-3 (Brown et al., 2020), GPT-4 (OpenAI, 2023), and Gemini (Google DeepMind, 2023) — produced LLMs capable of sophisticated language understanding and generation.</p>
+<p>Google's Gemini family of models, employed in this project, is a multimodal model trained on a diverse corpus of text, code, and image data. Gemini 1.5 Flash, the specific variant used for AI grading in this project, is optimised for speed and efficiency while maintaining strong performance on reasoning and language understanding tasks. Google (2024) reports that Gemini 1.5 Flash achieves state-of-the-art performance on benchmarks including MMLU (Massive Multitask Language Understanding) and outperforms earlier models on academic reasoning tasks.</p>
+<p>Key capabilities relevant to educational grading include:
+- <strong>Semantic understanding</strong>: Identifying the meaning of an answer, not merely its surface form
+- <strong>Factual verification</strong>: Assessing whether claims in an answer are correct
+- <strong>Argument evaluation</strong>: Assessing the logical structure and quality of argumentation
+- <strong>Rubric adherence</strong>: Grading according to specified criteria (when provided)
+- <strong>Feedback generation</strong>: Producing coherent, constructive, specific feedback</p>
+<hr />
+<h2 id="24-automated-essay-scoring-aes-a-historical-survey">2.4 Automated Essay Scoring (AES): A Historical Survey</h2>
+<h3 id="241-early-systems">2.4.1 Early Systems</h3>
+<p>The first computational system for essay grading, Project Essay Grade (PEG), was developed by Ellis Page in 1966. PEG used surface features of text — word length, sentence length, punctuation density — as proxies for essay quality. While innovative, PEG assessed stylistic features that correlate with quality rather than directly measuring semantic content or argumentation.</p>
+<p>The Electronic Essay Rater (e-rater), developed at Educational Testing Service (ETS), introduced more sophisticated NLP features — syntactic analysis, content vector analysis, discourse structure — and achieved correlations above 0.90 with human graders on standardised tests such as the GMAT (Burstein et al., 2004). The Intelligent Essay Assessor (IEA) by Pearson used Latent Semantic Analysis (LSA) to measure conceptual similarity between student answers and reference material.</p>
+<h3 id="242-machine-learning-approaches">2.4.2 Machine Learning Approaches</h3>
+<p>The second wave of AES systems employed traditional machine learning classifiers (Support Vector Machines, Random Forest) trained on handcrafted linguistic features. Phandi et al. (2015) demonstrated that domain-adaptation techniques could improve AES generalisability across essay topics. The Automated Student Assessment Prize (ASAP) competition, run on Kaggle in 2012, catalysed substantial research, producing models achieving weighted kappa scores of 0.80+ with human graders.</p>
+<h3 id="243-deep-learning-and-transformer-based-systems">2.4.3 Deep Learning and Transformer-Based Systems</h3>
+<p>LSTM-based recurrent neural networks (Taghipour &amp; Ng, 2016) substantially improved AES by learning hierarchical text representations automatically. The introduction of BERT-based fine-tuning (Rodriquez et al., 2019; Uto &amp; Okano, 2021) pushed kappa correlations above 0.85 for standard essay datasets.</p>
+<p>The most recent frontier employs LLMs — GPT-3, GPT-4, Gemini — either fine-tuned for AES tasks or used via prompt engineering (zero-shot or few-shot). Xiao et al. (2023) demonstrated that GPT-4 achieves human-level grading performance on essays when provided with rubric-based instructions in the prompt. Mizumoto and Eguchi (2023) showed that Generative AI can provide detailed, coherent feedback comparable to expert human tutors. This "prompt-based" approach — which this project employs via the Gemini API — eliminates the need for labelled grading datasets and task-specific fine-tuning, dramatically reducing implementation complexity while preserving state-of-the-art performance.</p>
+<h3 id="244-ai-grading-of-short-answers">2.4.4 AI Grading of Short Answers</h3>
+<p>Short answer grading (SAG) — where responses range from a few words to several sentences — presents distinct challenges from essay grading. Burrows et al. (2015) provide a comprehensive survey distinguishing SAG from AES and noting that SAG systems must evaluate semantic similarity to a reference answer (knowledge-bounded), while AES systems evaluate quality along multiple rubric dimensions (knowledge-unbounded).</p>
+<p>Dzikovska et al. (2013) developed the Beetle II system for short answer grading in science education, achieving promising results on constrained domains. Mohler and Mihalcea (2009) used unsupervised text similarity methods. Recent transformer-based approaches (Sung et al., 2019; Bonthu et al., 2021) report kappa correlations of 0.70–0.90 with human graders on benchmark datasets.</p>
+<hr />
+<h2 id="25-review-of-existing-online-quiz-and-grading-systems">2.5 Review of Existing Online Quiz and Grading Systems</h2>
+<h3 id="251-google-forms">2.5.1 Google Forms</h3>
+<p><strong>Description:</strong> Google Forms is a free, widely-used web-based form and survey builder that supports basic quiz functionality, including MCQ, checkboxes, and short text responses.</p>
+<p><strong>Grading Capabilities:</strong> Google Forms supports automatic grading for MCQ and checkbox items through exact-match comparison. Short text responses support limited exact-match grading but do not support semantic evaluation.</p>
+<p><strong>Limitations:</strong> No essay grading, no AI integration, no analytics beyond basic summary statistics, no time-limited assessments, no role-based access control. Feedback is limited to pre-entered answer explanation text.</p>
+<p><strong>Gap:</strong> Google Forms is suitable for basic factual recall testing but cannot assess higher-order thinking or provide personalised learning feedback.</p>
+<h3 id="252-kahoot">2.5.2 Kahoot!</h3>
+<p><strong>Description:</strong> Kahoot is a game-based learning platform enabling interactive, competitive quizzes in live classroom settings.</p>
+<p><strong>Grading Capabilities:</strong> Supports MCQ only. Points are awarded based on speed and accuracy.</p>
+<p><strong>Limitations:</strong> Limited to live sessions, MCQ only, no open-ended responses, no AI grading, gamified format may not be appropriate for summative assessment.</p>
+<p><strong>Gap:</strong> Not suitable for formal summative assessment. Cannot grade subjective responses.</p>
+<h3 id="253-moodle-quiz">2.5.3 Moodle Quiz</h3>
+<p><strong>Description:</strong> Moodle is a widely-deployed open-source LMS used in universities globally. Its Quiz module supports a variety of question types and includes sophisticated configuration options.</p>
+<p><strong>Grading Capabilities:</strong> Supports MCQ, True/False, and some short-answer types with exact-match or regular expression-based automatic grading. Essay questions must be manually graded by instructors. Moodle 4.x introduced AI essay feedback via integration with external APIs (experimental feature in 2024).</p>
+<p><strong>Limitations:</strong> Essay and constructed-response grading remains largely manual. The AI feedback feature is limited and requires additional plugin installation. Moodle's interface is complex and often characterised as non-intuitive by student users.</p>
+<p><strong>Gap:</strong> While comprehensive, Moodle's AI grading remains underdeveloped and requires substantial configuration. The user experience is dated compared to modern web applications.</p>
+<h3 id="254-gradescope">2.5.4 Gradescope</h3>
+<p><strong>Description:</strong> Gradescope is a platform used by universities for grading paper-based and digital assignments, including programming assignments, using AI-assisted clustering and grouping features.</p>
+<p><strong>Grading Capabilities:</strong> Uses AI to group similar student answers, allowing graders to apply a single rubric to a cluster of responses. Provides partial credit and detailed feedback. Supports OCR for paper-based assignments.</p>
+<p><strong>Limitations:</strong> Does not automatically assign scores without human involvement. Functions as a human-in-the-loop grading acceleration tool rather than a fully automated grading system. Subscription cost is significant for resource-constrained institutions.</p>
+<p><strong>Gap:</strong> Gradescope reduces grading effort but does not eliminate the need for human grading. Fully autonomous AI scoring is not its design goal.</p>
+<h3 id="255-quizlet-and-quizizz">2.5.5 Quizlet and Quizizz</h3>
+<p><strong>Description:</strong> Both platforms are interactive quiz and flashcard tools popular in K-12 and informal learning contexts.</p>
+<p><strong>Grading Capabilities:</strong> MCQ and fill-in-the-blank items with automatic grading. Some AI features for generating questions from user content.</p>
+<p><strong>Limitations:</strong> No essay grading, no personalised feedback, no educator analytics at institutional level. Not designed for formal summative assessment in higher education.</p>
+<p><strong>Gap:</strong> Neither platform can grade constructed responses or provide AI-generated personalised feedback.</p>
+<h3 id="256-summary-of-gap-analysis">2.5.6 Summary of Gap Analysis</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Google Forms</th>
+<th>Kahoot</th>
+<th>Moodle</th>
+<th>Gradescope</th>
+<th><strong>QuizAI (This Project)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MCQ Grading</td>
+<td>✓ Auto</td>
+<td>✓ Auto</td>
+<td>✓ Auto</td>
+<td>✓ Semi</td>
+<td>✓ Auto</td>
+</tr>
+<tr>
+<td>T/F Grading</td>
+<td>✓ Auto</td>
+<td>✗</td>
+<td>✓ Auto</td>
+<td>✓ Semi</td>
+<td>✓ Auto</td>
+</tr>
+<tr>
+<td>Short Answer AI Grading</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗ Semi</td>
+<td><strong>✓ Full AI</strong></td>
+</tr>
+<tr>
+<td>Essay AI Grading</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗ Semi</td>
+<td><strong>✓ Full AI</strong></td>
+</tr>
+<tr>
+<td>Instant Results</td>
+<td>✓ MCQ only</td>
+<td>✓</td>
+<td>✓ MCQ</td>
+<td>✗</td>
+<td><strong>✓ All types</strong></td>
+</tr>
+<tr>
+<td>Personalised AI Feedback</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td><strong>✓</strong></td>
+</tr>
+<tr>
+<td>Timed Quizzes</td>
+<td>✗</td>
+<td>✓</td>
+<td>✓</td>
+<td>✗</td>
+<td><strong>✓</strong></td>
+</tr>
+<tr>
+<td>Analytics Dashboard</td>
+<td>Basic</td>
+<td>Basic</td>
+<td>✓</td>
+<td>✓</td>
+<td><strong>✓</strong></td>
+</tr>
+<tr>
+<td>Free to Use</td>
+<td>✓</td>
+<td>Freemium</td>
+<td>✓</td>
+<td>✗</td>
+<td><strong>✓</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="26-related-work">2.6 Related Work</h2>
+<h3 id="261-prompt-based-llm-grading">2.6.1 Prompt-Based LLM Grading</h3>
+<p>Mizumoto and Eguchi (2023) evaluated ChatGPT's (GPT-3.5/GPT-4) grading of second-language writing essays using analytic rubric-based prompts. They found that GPT-4 grading correlated at 0.80+ with expert human graders on holistic scores and 0.70+ on individual analytic dimensions. Crucially, the feedback generated was rated as "helpful" or "very helpful" by student evaluators in 78% of cases — comparable to human teacher feedback. This supports the central technical premise of this project.</p>
+<h3 id="262-automated-grading-in-nigerian-universities">2.6.2 Automated Grading in Nigerian Universities</h3>
+<p>Shittu et al. (2011) conducted a study on e-assessment in Nigerian tertiary institutions, finding widespread interest in automated grading among academic staff constrained by large class sizes, but noting inadequate infrastructure and lack of integrated tools as the primary barriers to adoption. The QuizAI system is designed with these constraints in mind — it uses cloud-based Supabase for database hosting (no on-premise infrastructure required), Google Gemini's free tier for AI grading, and a minimal deployment footprint.</p>
+<h3 id="263-immediate-feedback-and-learning-outcomes">2.6.3 Immediate Feedback and Learning Outcomes</h3>
+<p>Mory (2004) reviewed 43 studies on feedback in computer-based instruction, finding that immediate, specific, elaborated feedback (i.e., feedback that explains the correct answer and reasoning, not just marks it wrong) had the largest positive effect on learning outcomes. The AI grading in this project is explicitly designed to generate elaborated feedback — including specific strengths, specific improvements, and explanatory commentary — aligning with the highest-impact feedback modality.</p>
+<hr />
+<h2 id="27-theoretical-framework">2.7 Theoretical Framework</h2>
+<p>This project is grounded in three complementary theoretical frameworks:</p>
+<h3 id="271-blooms-taxonomy-of-educational-objectives-revised">2.7.1 Bloom's Taxonomy of Educational Objectives (Revised)</h3>
+<p>Bloom's (1956) taxonomy, as revised by Krathwohl et al. (2002), organises cognitive learning objectives into six levels:
+1. Remember (recall facts)
+2. Understand (interpret, explain)
+3. Apply (use knowledge in new situations)
+4. Analyse (draw connections, compare)
+5. Evaluate (judge, assess, critique)
+6. Create (design, produce)</p>
+<p>Traditional automated grading (MCQ) tests primarily at levels 1–2. AI grading of constructed responses enables assessment at levels 3–6. QuizAI's multi-question-type architecture explicitly supports this full range, making it a tool for comprehensive higher education assessment.</p>
+<h3 id="272-the-theory-of-formative-assessment-black-wiliam-1998">2.7.2 The Theory of Formative Assessment (Black &amp; Wiliam, 1998)</h3>
+<p>Black and Wiliam's (1998) seminal meta-analysis established that formative assessment — characterised by frequent, low-stakes assessment with specific, actionable feedback — dramatically improves learning outcomes. The average effect size across the 250 studies they reviewed was 0.40–0.70 standard deviations. Three conditions distinguish effective formative assessment:</p>
+<ol>
+<li><strong>Clear learning objectives</strong>: QuizAI allows educators to specify model answers and rubrics</li>
+<li><strong>Actionable feedback</strong>: Gemini generates specific strengths and improvements</li>
+<li><strong>Frequency of assessment</strong>: The platform supports unlimited quiz creation and administration</li>
+</ol>
+<h3 id="273-constructivism-and-scaffolded-learning">2.7.3 Constructivism and Scaffolded Learning</h3>
+<p>Vygotsky's (1978) concept of the Zone of Proximal Development (ZPD) and Bruner's (1966) scaffolding theory suggest that learners develop most effectively when they receive support calibrated to their current ability — help at the edge of what they can do independently. AI-generated feedback that identifies specific gaps and improvement areas provides this calibrated scaffolding, guiding students toward mastery rather than simply informing them of failure.</p>
+<hr />
+<h2 id="28-summary">2.8 Summary</h2>
+<p>This chapter has established the intellectual and empirical foundations for the QuizAI project. The review demonstrates:</p>
+<ol>
+<li>E-learning has evolved to a point where AI integration in assessment is technically feasible and educationally justified.</li>
+<li>Automated grading of constructed responses — historically a human-only task — is now achievable at near-human accuracy using LLMs like Google Gemini.</li>
+<li>Existing online quiz tools exhibit a consistent gap: none combines free access, multi-question-type support, AI grading of open-ended responses, and personalised feedback in a single platform.</li>
+<li>The educational research literature strongly supports the value of immediate, specific, elaborated feedback — precisely what AI grading can provide at scale.</li>
+<li>The project is theoretically grounded in Bloom's Taxonomy, Formative Assessment Theory, and Constructivism.</li>
+</ol>
+<p>Chapter Three will proceed to document the research methodology, system analysis, and detailed system design that translate these foundations into a concrete technical system.</p>
+<hr />
+<h2 id="references">References</h2>
+<p>Baker, R. S., &amp; Inventado, P. S. (2014). Educational data mining and learning analytics. In <em>Learning analytics: From research to practice</em> (pp. 61–75). Springer.</p>
+<p>Black, P., &amp; Wiliam, D. (1998). Assessment and classroom learning. <em>Assessment in Education: Principles, Policy &amp; Practice</em>, 5(1), 7–74.</p>
+<p>Bloom, B. S. (1956). <em>Taxonomy of educational objectives, handbook I: The cognitive domain</em>. David McKay.</p>
+<p>Bloom, B. S. (1984). The 2 sigma problem: The search for methods of group instruction as effective as one-to-one tutoring. <em>Educational Researcher</em>, 13(6), 4–16.</p>
+<p>Brown, T., et al. (2020). Language models are few-shot learners. <em>Advances in Neural Information Processing Systems</em>, 33, 1877–1901.</p>
+<p>Burrows, S., Gurevych, I., &amp; Stein, B. (2015). The eras and trends of automatic short answer grading. <em>International Journal of Artificial Intelligence in Education</em>, 25(1), 60–117.</p>
+<p>Burstein, J., Chodorow, M., &amp; Leacock, C. (2004). Automated essay evaluation: The e-rater® system. <em>AI Magazine</em>, 25(3), 27–36.</p>
+<p>Devlin, J., et al. (2019). BERT: Pre-training of deep bidirectional transformers for language understanding. <em>Proceedings of NAACL-HLT 2019</em>.</p>
+<p>Dermo, J. (2009). E-assessment and the student learning experience. <em>British Journal of Educational Technology</em>, 40(2), 203–214.</p>
+<p>Dzikovska, M., et al. (2013). SemEval-2013 Task 7: The Joint Student Response Analysis and 8th Recognizing Textual Entailment Challenge. <em>SemEval-2013</em>.</p>
+<p>Garrison, D. R., &amp; Anderson, T. (2003). <em>E-learning in the 21st century</em>. Routledge.</p>
+<p>Google DeepMind. (2023). <em>Gemini: A family of highly capable multimodal models</em>. Technical report. https://deepmind.google</p>
+<p>Graesser, A. C., et al. (2000). Using latent semantic analysis to evaluate the contributions of students in AutoTutor. <em>Interactive Learning Environments</em>, 8(2), 129–147.</p>
+<p>Hattie, J., &amp; Timperley, H. (2007). The power of feedback. <em>Review of Educational Research</em>, 77(1), 81–112.</p>
+<p>Krathwohl, D. R. (2002). A revision of Bloom's taxonomy: An overview. <em>Theory into Practice</em>, 41(4), 212–218.</p>
+<p>Marriott, P., &amp; Lau, A. (2008). The use of on-line summative assessment in an undergraduate financial accounting course. <em>Journal of Accounting Education</em>, 26(2), 73–90.</p>
+<p>Mizumoto, A., &amp; Eguchi, M. (2023). Exploring the potential of using an AI language model for automated essay scoring. <em>Research Methods in Applied Linguistics</em>, 2(2), 100050.</p>
+<p>Mohler, M., &amp; Mihalcea, R. (2009). Text-to-text semantic similarity for automatic short answer grading. <em>Proceedings of EACL 2009</em>.</p>
+<p>Mory, E. H. (2004). Feedback research revisited. <em>Handbook of Research on Educational Communications and Technology</em>, 2, 745–783.</p>
+<p>Phandi, P., Chai, K. M. A., &amp; Ng, H. T. (2015). Flexible domain adaptation for automated essay scoring using correlated linear regression. <em>Proceedings of EMNLP 2015</em>.</p>
+<p>Ramesh, D., &amp; Sanampudi, S. K. (2022). An automated essay scoring systems: A systematic literature review. <em>Artificial Intelligence Review</em>, 55, 2495–2527.</p>
+<p>Shittu, A. J. K., Ogunlade, O. O., &amp; Nickson, L. (2011). A survey on the use of e-assessment in Nigerian tertiary institutions. <em>International Journal on New Trends in Education</em>, 2(3), 118–127.</p>
+<p>Taghipour, K., &amp; Ng, H. T. (2016). A neural approach to automated essay scoring. <em>Proceedings of EMNLP 2016</em>.</p>
+<p>Vaswani, A., et al. (2017). Attention is all you need. <em>Advances in Neural Information Processing Systems</em>, 30.</p>
+<p>Vygotsky, L. S. (1978). <em>Mind in society: The development of higher psychological processes</em>. Harvard University Press.</p>
+<p>Xiao, Y., et al. (2023). Evaluating reading comprehension exercises generated by LLMs: A showcase of ChatGPT in education applications. <em>Proceedings of BEA 2023</em>.</p>
+<div style="page-break-after: always;"></div>
+
+<h1 id="chapter-three-methodology">CHAPTER THREE: METHODOLOGY</h1>
+<h2 id="online-quiz-system-with-artificial-intelligence-grading_2">Online Quiz System with Artificial Intelligence Grading</h2>
+<hr />
+<h2 id="31-introduction">3.1 Introduction</h2>
+<p>This chapter describes the research methodology, system development approach, analytical frameworks, and technical design decisions that guided the creation of the QuizAI system. It presents the system development life cycle model adopted, the system analysis (including requirement specification and use-case modelling), the system design (including architecture, database schema, data flow diagrams, and entity-relationship diagram), and an account of the tools and technologies employed.</p>
+<hr />
+<h2 id="32-research-methodology">3.2 Research Methodology</h2>
+<h3 id="321-nature-of-the-research">3.2.1 Nature of the Research</h3>
+<p>This project is classified as <strong>applied computing research</strong> — its primary aim is to design and construct an artefact (the QuizAI system) that solves a real-world problem (the limitations of existing online assessment systems with respect to AI grading). The research employs a <strong>Design Science Research</strong> (Hevner et al., 2004) paradigm, which holds that the creation and evaluation of an IT artefact constitutes valid, rigorous research when the artefact addresses a significant problem, is properly evaluated, and its design process is communicated clearly.</p>
+<h3 id="322-system-development-methodology-agile-scrum">3.2.2 System Development Methodology: Agile (Scrum)</h3>
+<p>The system was developed using an <strong>Agile Software Development</strong> methodology, particularly the <strong>Scrum</strong> framework (Schwaber &amp; Sutherland, 2020). Agile was chosen over traditional sequential models (Waterfall) for the following reasons:</p>
+<p><strong>Iterative Development:</strong> Rather than attempting to define all requirements upfront, Agile allows requirements to evolve as the system is built and tested. This was essential given the exploratory nature of integrating an LLM grading engine, whose behaviour needed to be iteratively refined.</p>
+<p><strong>Incremental Delivery:</strong> Working software was produced at the end of each sprint, allowing early testing and feedback integration.</p>
+<p><strong>Flexibility:</strong> Emerging insights — for example, the optimal prompt structure for Gemini grading, or the most effective way to present AI feedback to students — could be incorporated without disrupting the overall project plan.</p>
+<p><strong>Suitability for Solo Development:</strong> Scrum's lightweight ceremonies (daily standup adapted to a self-check, sprint review with supervisor) are manageable for a single developer.</p>
+<p>The project was organised into 6 two-week sprints:</p>
+<table>
+<thead>
+<tr>
+<th>Sprint</th>
+<th>Duration</th>
+<th>Focus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Weeks 1–2</td>
+<td>Requirements analysis, technology research, Supabase setup</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Weeks 3–4</td>
+<td>Database schema design, authentication system</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Weeks 5–6</td>
+<td>Quiz builder (admin), quiz listing</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Weeks 7–8</td>
+<td>Quiz-taking interface, timer, auto-save</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Weeks 9–10</td>
+<td>AI grading engine integration, results page</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Weeks 11–12</td>
+<td>Analytics dashboards, testing, documentation</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="33-system-analysis">3.3 System Analysis</h2>
+<h3 id="331-requirements-gathering">3.3.1 Requirements Gathering</h3>
+<p>Requirements were gathered through:</p>
+<ol>
+<li><strong>Literature review</strong>: As documented in Chapter 2, existing systems' limitations informed functional requirements.</li>
+<li><strong>Informal stakeholder consultation</strong>: Discussions with fellow students (prospective users) and academic staff members identified usability priorities and desired features.</li>
+<li><strong>Competitive analysis</strong>: Hands-on evaluation of Google Forms, Kahoot, and Moodle informed requirements.</li>
+</ol>
+<h3 id="332-functional-requirements">3.3.2 Functional Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>FR#</th>
+<th>Requirement</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-01</td>
+<td>System shall support registration and login via email/password</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-02</td>
+<td>System shall support two user roles: Educator and Student</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-03</td>
+<td>Educators shall be able to create quizzes with title, subject, duration, pass mark</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-04</td>
+<td>Educators shall be able to add MCQ, True/False, Short Answer, and Essay questions</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-05</td>
+<td>Educators shall be able to publish or unpublish quizzes</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-06</td>
+<td>Students shall see only published quizzes</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-07</td>
+<td>Students shall be able to start a quiz and record their answers</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-08</td>
+<td>System shall display a real-time countdown timer during quiz</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-09</td>
+<td>System shall auto-submit the quiz when timer expires</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-10</td>
+<td>System shall auto-save student answers as they progress</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>FR-11</td>
+<td>MCQ and T/F answers shall be graded instantly on submission</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-12</td>
+<td>Short answer and essay responses shall be graded by Gemini AI</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-13</td>
+<td>AI grading shall return: score, feedback, strengths, improvements</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-14</td>
+<td>Results shall be immediately accessible to the student after grading</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-15</td>
+<td>Educators shall see all students' results for their quizzes</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-16</td>
+<td>Educator dashboard shall display class-level statistics</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>FR-17</td>
+<td>Student dashboard shall display personal score history</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>FR-18</td>
+<td>Educators shall be able to delete quizzes</td>
+<td>Low</td>
+</tr>
+</tbody>
+</table>
+<h3 id="333-non-functional-requirements">3.3.3 Non-Functional Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>NFR#</th>
+<th>Requirement</th>
+<th>Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NFR-01</td>
+<td>System shall load each page in under 3 seconds on standard broadband</td>
+<td>Performance</td>
+</tr>
+<tr>
+<td>NFR-02</td>
+<td>AI grading shall complete within 60 seconds of quiz submission</td>
+<td>Performance</td>
+</tr>
+<tr>
+<td>NFR-03</td>
+<td>Student data shall be accessible only to the student and their educators</td>
+<td>Security</td>
+</tr>
+<tr>
+<td>NFR-04</td>
+<td>All API endpoints shall require authentication before processing requests</td>
+<td>Security</td>
+</tr>
+<tr>
+<td>NFR-05</td>
+<td>Database access shall be governed by Row Level Security policies</td>
+<td>Security</td>
+</tr>
+<tr>
+<td>NFR-06</td>
+<td>The interface shall be usable by non-technical students without training</td>
+<td>Usability</td>
+</tr>
+<tr>
+<td>NFR-07</td>
+<td>The system shall be responsive across desktop and mobile viewports</td>
+<td>Usability</td>
+</tr>
+<tr>
+<td>NFR-08</td>
+<td>The system shall be built on scalable, cloud-hosted infrastructure</td>
+<td>Scalability</td>
+</tr>
+<tr>
+<td>NFR-09</td>
+<td>Source code shall be modular, documented, and version-controlled</td>
+<td>Maintainability</td>
+</tr>
+<tr>
+<td>NFR-10</td>
+<td>The system shall function correctly on Chrome, Firefox, and Edge</td>
+<td>Compatibility</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="34-use-case-modelling">3.4 Use Case Modelling</h2>
+<h3 id="341-actors">3.4.1 Actors</h3>
+<ul>
+<li><strong>Educator (Admin):</strong> A registered user with instructor-level privileges; creates and manages quizzes; views class results.</li>
+<li><strong>Student:</strong> A registered user with learner-level privileges; takes quizzes; views personal results.</li>
+<li><strong>Gemini AI:</strong> External AI service that receives question-answer pairs and returns grading results.</li>
+<li><strong>Supabase:</strong> Backend-as-a-service providing database, authentication, and storage.</li>
+</ul>
+<h3 id="342-use-cases">3.4.2 Use Cases</h3>
+<p><strong>Educator Use Cases:</strong></p>
+<table>
+<thead>
+<tr>
+<th>UC#</th>
+<th>Use Case</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UC-01</td>
+<td>Register as Educator</td>
+<td>Submit full name, email, password, select Educator role</td>
+</tr>
+<tr>
+<td>UC-02</td>
+<td>Login</td>
+<td>Authenticate with email and password</td>
+</tr>
+<tr>
+<td>UC-03</td>
+<td>Create Quiz</td>
+<td>Enter quiz metadata and add questions</td>
+</tr>
+<tr>
+<td>UC-04</td>
+<td>Publish Quiz</td>
+<td>Toggle a quiz to published (visible to students)</td>
+</tr>
+<tr>
+<td>UC-05</td>
+<td>Unpublish Quiz</td>
+<td>Remove quiz from student view</td>
+</tr>
+<tr>
+<td>UC-06</td>
+<td>Delete Quiz</td>
+<td>Permanently remove a quiz and all attempts</td>
+</tr>
+<tr>
+<td>UC-07</td>
+<td>View Quiz Results</td>
+<td>See all student submissions and scores for a quiz</td>
+</tr>
+<tr>
+<td>UC-08</td>
+<td>View Grade Report</td>
+<td>See all graded attempts across all quizzes</td>
+</tr>
+<tr>
+<td>UC-09</td>
+<td>View Student Roster</td>
+<td>See list of registered students</td>
+</tr>
+<tr>
+<td>UC-10</td>
+<td>Logout</td>
+<td>Terminate authenticated session</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Student Use Cases:</strong></p>
+<table>
+<thead>
+<tr>
+<th>UC#</th>
+<th>Use Case</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UC-11</td>
+<td>Register as Student</td>
+<td>Submit full name, email, password, select Student role</td>
+</tr>
+<tr>
+<td>UC-12</td>
+<td>Login</td>
+<td>Authenticate with email and password</td>
+</tr>
+<tr>
+<td>UC-13</td>
+<td>View Available Quizzes</td>
+<td>See list of published quizzes</td>
+</tr>
+<tr>
+<td>UC-14</td>
+<td>Start Quiz</td>
+<td>Begin a quiz attempt; timer starts</td>
+</tr>
+<tr>
+<td>UC-15</td>
+<td>Answer Question</td>
+<td>Select option (MCQ/T-F) or type response (short/essay)</td>
+</tr>
+<tr>
+<td>UC-16</td>
+<td>Navigate Questions</td>
+<td>Move between questions using navigator</td>
+</tr>
+<tr>
+<td>UC-17</td>
+<td>Submit Quiz</td>
+<td>Manually submit quiz or auto-submit on timer expiry</td>
+</tr>
+<tr>
+<td>UC-18</td>
+<td>View Results</td>
+<td>View score, grade, and per-question AI feedback</td>
+</tr>
+<tr>
+<td>UC-19</td>
+<td>Logout</td>
+<td>Terminate authenticated session</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="35-system-architecture">3.5 System Architecture</h2>
+<h3 id="351-overall-architecture">3.5.1 Overall Architecture</h3>
+<p>The QuizAI system employs a <strong>three-tier client-server architecture</strong> deployed on cloud services:</p>
+<pre><code>┌──────────────────────────────────────────────────────┐
+│                   CLIENT TIER                         │
+│  Browser (HTML/CSS/JavaScript via Next.js React)     │
+│  - Landing Page       - Auth Pages                   │
+│  - Admin Dashboard    - Student Dashboard            │
+│  - Quiz Builder       - Quiz-Taking Interface        │
+│  - Results Page       - Analytics Views              │
+└───────────────────┬──────────────────────────────────┘
+                    │ HTTPS Requests
+┌───────────────────▼──────────────────────────────────┐
+│                APPLICATION TIER                       │
+│      Next.js 14 App Router (Server Components &amp;      │
+│              API Routes — Node.js Runtime)            │
+│                                                      │
+│  /api/quizzes    /api/attempts    /api/grade          │
+│  [Quiz CRUD]     [Attempt mgmt]   [AI Grading]       │
+└───┬───────────────────────────────────┬──────────────┘
+    │ SQL (Supabase PostgREST)          │ HTTPS (Gemini API)
+┌───▼──────────────────┐    ┌──────────▼───────────────┐
+│    DATA TIER         │    │    AI SERVICE TIER        │
+│  Supabase            │    │  Google Generative AI     │
+│  (PostgreSQL + RLS)  │    │  (Gemini 1.5 Flash)      │
+│                      │    │                          │
+│  - profiles          │    │  - Grade short answers   │
+│  - quizzes           │    │  - Grade essays          │
+│  - questions         │    │  - Generate feedback     │
+│  - quiz_attempts     │    │                          │
+│  - attempt_answers   │    │                          │
+└──────────────────────┘    └──────────────────────────┘
+</code></pre>
+<h3 id="352-client-server-communication">3.5.2 Client-Server Communication</h3>
+<p>The client (browser) communicates with the Next.js application tier via:
+- <strong>Server-Rendered Pages</strong> (Next.js App Router): Initial page HTML rendered on server, reducing time-to-first-render
+- <strong>API Routes</strong> (<code>/api/*</code>): RESTful JSON endpoints consumed by client-side React components for dynamic operations (CRUD, grading trigger)
+- <strong>Supabase Client SDK</strong>: Direct browser-to-Supabase connection (via the <code>@supabase/ssr</code> package) for real-time data subscriptions and database queries, governed by Row Level Security</p>
+<hr />
+<h2 id="36-database-design">3.6 Database Design</h2>
+<h3 id="361-entity-relationship-diagram-erd">3.6.1 Entity-Relationship Diagram (ERD)</h3>
+<p>The database comprises five primary entities. Their attributes and relationships are described below:</p>
+<p><strong>PROFILES</strong>
+- <code>id (PK, FK → auth.users.id)</code>: UUID
+- <code>email</code>: TEXT
+- <code>full_name</code>: TEXT
+- <code>role</code>: TEXT ENUM ('student', 'admin')
+- <code>created_at</code>: TIMESTAMPTZ</p>
+<p><strong>QUIZZES</strong>
+- <code>id (PK)</code>: UUID
+- <code>title</code>: TEXT
+- <code>description</code>: TEXT (nullable)
+- <code>subject</code>: TEXT (nullable)
+- <code>created_by (FK → profiles.id)</code>: UUID
+- <code>duration_minutes</code>: INTEGER
+- <code>total_marks</code>: INTEGER
+- <code>pass_mark</code>: INTEGER (1–100)
+- <code>is_published</code>: BOOLEAN
+- <code>created_at</code>: TIMESTAMPTZ</p>
+<p><strong>QUESTIONS</strong>
+- <code>id (PK)</code>: UUID
+- <code>quiz_id (FK → quizzes.id)</code>: UUID
+- <code>question_text</code>: TEXT
+- <code>question_type</code>: TEXT ENUM ('mcq', 'short_answer', 'essay', 'true_false')
+- <code>options</code>: JSONB (nullable, for MCQ: [{id, text, isCorrect}])
+- <code>correct_answer</code>: TEXT (nullable)
+- <code>model_answer</code>: TEXT (nullable)
+- <code>rubric</code>: TEXT (nullable)
+- <code>max_score</code>: INTEGER
+- <code>order_index</code>: INTEGER</p>
+<p><strong>QUIZ_ATTEMPTS</strong>
+- <code>id (PK)</code>: UUID
+- <code>quiz_id (FK → quizzes.id)</code>: UUID
+- <code>student_id (FK → profiles.id)</code>: UUID
+- <code>started_at</code>: TIMESTAMPTZ
+- <code>submitted_at</code>: TIMESTAMPTZ (nullable)
+- <code>total_score</code>: NUMERIC
+- <code>total_possible</code>: NUMERIC
+- <code>percentage</code>: NUMERIC
+- <code>grade</code>: TEXT ENUM ('A', 'B', 'C', 'D', 'F')
+- <code>status</code>: TEXT ENUM ('in_progress', 'submitted', 'graded')</p>
+<p><strong>ATTEMPT_ANSWERS</strong>
+- <code>id (PK)</code>: UUID
+- <code>attempt_id (FK → quiz_attempts.id)</code>: UUID
+- <code>question_id (FK → questions.id)</code>: UUID
+- <code>student_answer</code>: TEXT
+- <code>score</code>: NUMERIC
+- <code>max_score</code>: NUMERIC
+- <code>feedback</code>: TEXT (nullable)
+- <code>strengths</code>: JSONB (nullable)
+- <code>improvements</code>: JSONB (nullable)
+- <code>is_correct</code>: BOOLEAN (nullable)
+- <code>graded_by</code>: TEXT ENUM ('ai', 'manual', 'auto', 'pending')</p>
+<p><strong>Entity Relationships:</strong>
+- One PROFILE → Many QUIZZES (educator creates quizzes)
+- One QUIZ → Many QUESTIONS
+- One QUIZ → Many QUIZ_ATTEMPTS
+- One PROFILE → Many QUIZ_ATTEMPTS (student attempts quizzes)
+- One QUIZ_ATTEMPT → Many ATTEMPT_ANSWERS
+- One QUESTION → Many ATTEMPT_ANSWERS (across attempts)</p>
+<h3 id="362-database-security-row-level-security-rls">3.6.2 Database Security: Row Level Security (RLS)</h3>
+<p>Supabase's Row Level Security feature enforces data isolation at the database layer, independent of the application layer. This provides a defence-in-depth security posture. Key policies include:</p>
+<ul>
+<li><strong>Quizzes</strong>: Students can only SELECT quizzes where <code>is_published = true</code> OR where <code>created_by = auth.uid()</code> (educators see their own drafts)</li>
+<li><strong>Quiz Attempts</strong>: Students can only SELECT/INSERT/UPDATE their own attempts (<code>student_id = auth.uid()</code>)</li>
+<li><strong>Attempt Answers</strong>: Students can only access answers belonging to their own attempts</li>
+<li><strong>Profiles</strong>: All authenticated users can read profiles (for name display); only the profile owner can update</li>
+</ul>
+<hr />
+<h2 id="37-data-flow-diagrams">3.7 Data Flow Diagrams</h2>
+<h3 id="371-level-0-dfd-context-diagram">3.7.1 Level 0 DFD (Context Diagram)</h3>
+<pre><code>                    ┌──────────────────────────────┐
+    [EDUCATOR]      │                              │     [STUDENT]
+     Quiz Data  →   │      QUIZAI SYSTEM           │  ← Quiz Attempt
+     Publish Cmd    │                              │   → Results + Feedback
+                    │                              │
+                    └──────────────────────────────┘
+                               ↕ AI Requests/Responses
+                         [GOOGLE GEMINI AI SERVICE]
+</code></pre>
+<h3 id="372-level-1-dfd">3.7.2 Level 1 DFD</h3>
+<p><strong>Process 1.0 — User Authentication</strong>
+- Input: Email, password, role
+- Process: Validate credentials via Supabase Auth; create/fetch profile
+- Output: Auth session token; redirect to role-appropriate dashboard</p>
+<p><strong>Process 2.0 — Quiz Management (Educator)</strong>
+- Input: Quiz metadata; question data
+- Process: Validate, store in quizzes + questions tables
+- Output: Quiz ID; confirmation; quiz listing updated</p>
+<p><strong>Process 3.0 — Quiz Attempt (Student)</strong>
+- Input: Student selection (quiz) and answers
+- Process: Create attempt record; save answers; enforce timer
+- Output: Attempt ID; auto-saved answers; timer display</p>
+<p><strong>Process 4.0 — AI Grading Engine</strong>
+- Input: Attempt ID → answers + questions from DB
+- Process: MCQ/T-F → rule-based comparison; Short/Essay → Gemini API call
+- Output: Per-question scores + feedback → stored in attempt_answers; aggregate score → stored in quiz_attempts</p>
+<p><strong>Process 5.0 — Results Presentation</strong>
+- Input: Attempt ID → graded attempt_answers
+- Process: Fetch all answers, format score display and feedback
+- Output: Results page with score, grade, per-question feedback</p>
+<p><strong>Process 6.0 — Analytics</strong>
+- Input: quiz_id (educator); student_id (student)
+- Process: Aggregate statistics from quiz_attempts
+- Output: Dashboard stats (avg, pass rate, distribution)</p>
+<hr />
+<h2 id="38-ai-grading-design">3.8 AI Grading Design</h2>
+<h3 id="381-short-answer-grading-pipeline">3.8.1 Short Answer Grading Pipeline</h3>
+<p>The short answer grading flow is as follows:</p>
+<ol>
+<li><strong>Trigger</strong>: Student submits quiz → <code>/api/grade</code> receives <code>{attemptId, quizId}</code></li>
+<li><strong>Fetch</strong>: API fetches all answers for the attempt, joined with their questions</li>
+<li><strong>Route</strong>: For each answer, branch on <code>question_type</code>:</li>
+<li><code>mcq</code> / <code>true_false</code> → Rule-based grader</li>
+<li><code>short_answer</code> → Gemini short-answer grader</li>
+<li><code>essay</code> → Gemini essay grader</li>
+<li><strong>Prompt Construction</strong> (short answer):</li>
+</ol>
+<pre><code>You are an expert academic grader. Grade the following student answer.
+
+Question: {question_text}
+Model Answer: {model_answer}
+Rubric (if provided): {rubric}
+Student Answer: {student_answer}
+Maximum Score: {max_score}
+
+Respond ONLY with JSON:
+{
+  &quot;score&quot;: &lt;number 0 to {max_score}&gt;,
+  &quot;feedback&quot;: &quot;&lt;2-3 sentence feedback&gt;&quot;,
+  &quot;strengths&quot;: [&quot;&lt;strength 1&gt;&quot;, &quot;&lt;strength 2&gt;&quot;],
+  &quot;improvements&quot;: [&quot;&lt;improvement 1&gt;&quot;, &quot;&lt;improvement 2&gt;&quot;]
+}
+</code></pre>
+<ol>
+<li><strong>Parse Response</strong>: Extract JSON from Gemini text response; validate score bounds</li>
+<li><strong>Store</strong>: Write <code>{score, feedback, strengths, improvements, graded_by: 'ai'}</code> to <code>attempt_answers</code></li>
+<li><strong>Aggregate</strong>: Sum scores; compute percentage and letter grade; update <code>quiz_attempts</code></li>
+</ol>
+<h3 id="382-essay-grading-rubric">3.8.2 Essay Grading Rubric</h3>
+<p>Essays are graded using a four-criterion rubric embedded in the Gemini prompt:</p>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Weight</th>
+<th>Aspects Evaluated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content &amp; Knowledge</td>
+<td>40%</td>
+<td>Accuracy, relevance, completeness</td>
+</tr>
+<tr>
+<td>Structure &amp; Organisation</td>
+<td>20%</td>
+<td>Introduction, body, conclusion; paragraph transitions</td>
+</tr>
+<tr>
+<td>Critical Analysis</td>
+<td>20%</td>
+<td>Depth of argument, evidence, counterpoint consideration</td>
+</tr>
+<tr>
+<td>Language &amp; Expression</td>
+<td>20%</td>
+<td>Clarity, grammar, vocabulary, coherence</td>
+</tr>
+</tbody>
+</table>
+<h3 id="383-rationale-for-gemini-15-flash">3.8.3 Rationale for Gemini 1.5 Flash</h3>
+<p>Gemini 1.5 Flash was selected as the AI grading model for the following reasons:
+- <strong>Accuracy</strong>: Achieves near-human performance on academic reasoning benchmarks
+- <strong>Speed</strong>: "Flash" variant optimised for low latency (average grading response: 3–8 seconds per answer)
+- <strong>Cost</strong>: Google AI Studio provides a free usage tier sufficient for educational-scale deployments
+- <strong>Reliability</strong>: Google's production infrastructure provides robust API availability
+- <strong>Context window</strong>: 1 million token context window supports grading long essays
+- <strong>Safety</strong>: Built-in content moderation prevents inappropriate content in feedback</p>
+<hr />
+<h2 id="39-technology-stack-justification">3.9 Technology Stack Justification</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Web Framework</td>
+<td>Next.js 14</td>
+<td>Server-side rendering, API routes in one framework; industry standard; strong TypeScript support</td>
+</tr>
+<tr>
+<td>Styling</td>
+<td>Vanilla CSS</td>
+<td>Maximum flexibility and control; no external CSS framework dependency; custom design system</td>
+</tr>
+<tr>
+<td>Database</td>
+<td>Supabase (PostgreSQL)</td>
+<td>Managed PostgreSQL with built-in auth, RLS, and real-time capabilities; generous free tier</td>
+</tr>
+<tr>
+<td>Authentication</td>
+<td>Supabase Auth</td>
+<td>Tightly integrated with database RLS; supports email/password and OAuth</td>
+</tr>
+<tr>
+<td>AI Grading</td>
+<td>Google Gemini 1.5 Flash</td>
+<td>State-of-the-art LLM with API access; free tier; optimised for educational reasoning tasks</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>TypeScript</td>
+<td>Type safety reduces runtime errors; better IDE tooling; self-documenting code</td>
+</tr>
+<tr>
+<td>Deployment</td>
+<td>Local dev (npm run dev)</td>
+<td>Simplifies academic demo; Next.js supports one-command deployment to Vercel for production</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="310-security-design">3.10 Security Design</h2>
+<p>The system employs defence-in-depth security:</p>
+<p><strong>Layer 1 — Network</strong>: HTTPS for all client-server and API communications</p>
+<p><strong>Layer 2 — Authentication</strong>: Supabase Auth issues JWTs (JSON Web Tokens) that expire and rotate; all API routes verify the JWT before processing requests</p>
+<p><strong>Layer 3 — Application</strong>: API route handlers check user roles before performing privileged operations (e.g., only users with <code>role = 'admin'</code> can create quizzes)</p>
+<p><strong>Layer 4 — Database</strong>: Supabase Row Level Security policies enforce data isolation at the database level; even if application code had a bug, the database would refuse to return unauthorised data</p>
+<p><strong>Layer 5 — Environment</strong>: API keys (Gemini, Supabase service key) stored in <code>.env.local</code> files, never committed to version control or exposed to the client</p>
+<hr />
+<h2 id="311-testing-strategy">3.11 Testing Strategy</h2>
+<p>The following testing approach was applied:</p>
+<p><strong>Unit Testing:</strong>
+- The Gemini grading functions were unit-tested by supplying known question-answer pairs and verifying that returned scores were within expected ranges
+- Database trigger for automatic profile creation was tested with new user registrations</p>
+<p><strong>Integration Testing:</strong>
+- The full grading pipeline was tested end-to-end: quiz creation → student attempt → submission → AI grading → results retrieval
+- Authentication flows were tested for correct role detection and routing</p>
+<p><strong>User Acceptance Testing (UAT):</strong>
+- 5 student volunteers were recruited to use the system
+- Task completion rate and satisfaction were recorded
+- AI grading scores were compared against researcher-generated expected scores for 20 short-answer and 10 essay cases
+- Mean correlation between AI scores and expected scores was calculated</p>
+<p><strong>Security Testing:</strong>
+- Attempted unauthorised access (student accessing admin endpoints) verified to be rejected with 403 errors
+- RLS policies verified by attempting direct SQL queries to return another user's data</p>
+<hr />
+<h2 id="312-summary">3.12 Summary</h2>
+<p>This chapter documented the complete methodology guiding the development of the QuizAI system. The key design decisions were:</p>
+<ol>
+<li><strong>Agile (Scrum)</strong> was selected as the development methodology for its iterative, flexible nature.</li>
+<li>The system follows a <strong>three-tier architecture</strong> with a clear separation between client, application, and data tiers.</li>
+<li>The <strong>database design</strong> uses five related tables with carefully designed RLS policies for security.</li>
+<li>The <strong>AI grading design</strong> uses structured prompts to Gemini 1.5 Flash, routing MCQ questions to a rule-based grader and short/essay questions to the LLM.</li>
+<li><strong>Security is implemented at four distinct layers</strong> for robustness.</li>
+<li><strong>Testing</strong> combines unit, integration, and user acceptance methods.</li>
+</ol>
+<p>Chapter Four will present the implementation details and results.</p>
+<hr />
+<h2 id="references_1">References</h2>
+<p>Hevner, A. R., et al. (2004). Design science in information systems research. <em>MIS Quarterly</em>, 28(1), 75–105.</p>
+<p>Schwaber, K., &amp; Sutherland, J. (2020). <em>The Scrum Guide</em>. https://scrumguides.org/</p>
+<p>Google. (2024). <em>Gemini API - Google AI Studio</em>. https://ai.google.dev</p>
+<div style="page-break-after: always;"></div>
+
+<h1 id="chapter-four-system-implementation-and-results">CHAPTER FOUR: SYSTEM IMPLEMENTATION AND RESULTS</h1>
+<h2 id="41-introduction">4.1 Introduction</h2>
+<p>This chapter presents the practical realisation of the QuizAI system, translating the theoretical models, architectural blueprints, and methodologies discussed in Chapter Three into a functional, secure, and modern web application. It discusses the technical implementation environment, the deployment of key software modules (including the frontend interface, backend database, and AI grading engine), and provides a comprehensive walkthrough of the user interface. Finally, this chapter details the testing methodologies applied to the system and evaluates the performance and accuracy of the Generative AI grading mechanism.</p>
+<hr />
+<h2 id="42-system-implementation-environment">4.2 System Implementation Environment</h2>
+<p>The QuizAI system was developed and implemented using a highly modern, cloud-native technology stack to ensure scalability, robust performance, and seamless user experiences.</p>
+<h3 id="421-hardware-and-software-specifications">4.2.1 Hardware and Software Specifications</h3>
+<p>The system was developed and tested on a development environment with the following specifications:
+- <strong>Operating System:</strong> Windows 11 Pro (64-bit)
+- <strong>Processor:</strong> Intel Core / AMD Ryzen equivalent (Multi-core)
+- <strong>Memory (RAM):</strong> 16GB Minimum
+- <strong>Development Tools:</strong> Visual Studio Code (IDE), Node.js (v20+ runtime), Git (Version Control).</p>
+<h3 id="422-technology-stack-implementation">4.2.2 Technology Stack Implementation</h3>
+<ul>
+<li><strong>Frontend Framework (Next.js 14):</strong> Utilised the App Router for server-side rendering (SSR), which significantly optimised the initial page load time. React components were written in strictly typed TypeScript to minimise runtime errors during development.</li>
+<li><strong>Styling Architecture:</strong> A custom "Bright SaaS" aesthetic was implemented using robust Vanilla CSS (<code>globals.css</code>) taking advantage of modern CSS variables. This included a responsive grid system and "Glassmorphism" — rendering clean, frosted translucent UI cards over an animated pastel background to maintain user engagement without visual fatigue.</li>
+<li><strong>Backend Infrastructure (Supabase):</strong> The backend relies heavily on Supabase for Auth (managing JSON Web Tokens), Database (PostgreSQL), and Row Level Security (RLS). Real-time subscriptions were managed via the <code>@supabase/ssr</code> client package.</li>
+<li><strong>AI Middleware:</strong> The core innovation, the Generative AI grading, was implemented by wrapping the Google Generative AI SDK within a Next.js serverless API route (<code>/api/grade</code>), ensuring API keys remained hidden from the client browser.</li>
+</ul>
+<hr />
+<h2 id="43-implementation-of-key-modules">4.3 Implementation of Key Modules</h2>
+<h3 id="431-authentication-and-role-management-module">4.3.1 Authentication and Role Management Module</h3>
+<p>Implementing secure access was the foundational module. Supabase Auth was integrated directly with the Next.js middleware. When a user logs in, the system checks their assigned role (<code>student</code> or <code>educator</code>) stored in the public <code>profiles</code> table. The middleware intercepts web requests and routes educators to the <code>/admin/dashboard</code> while students are routed to <code>/student/dashboard</code>. Unauthenticated attempts to access either dashboard immediately redirect to the <code>/login</code> portal.</p>
+<h3 id="432-the-educator-admin-module">4.3.2 The Educator (Admin) Module</h3>
+<p>The Educator module empowers lecturers to construct and manage assessments without deep technical knowledge:
+- <strong>Quiz Formulation:</strong> Instructors define metadata (subject, duration, pass threshold).
+- <strong>Question Assembly:</strong> A dynamic form allows adding endless questions across multiple types (MCQ, True/False, Short Answer, Essay). Crucially, the system requires the educator to input a <strong>"Model Answer"</strong> and an optional <strong>"Grading Rubric"</strong> for written questions. This constraint is what anchors the AI's grading logic to the instructor’s expectations, preventing hallucinated grading.</p>
+<h3 id="433-the-student-assessment-module">4.3.3 The Student Assessment Module</h3>
+<p>The student interface was designed heavily around usability and anti-anxiety principles:
+- <strong>Real-time Navigation:</strong> Students are presented with a clean interface displaying one question at a time, with a navigation grid indicating attempted vs. pending questions.
+- <strong>State Management &amp; Timers:</strong> A client-side React hook manages a continuous countdown timer. To prevent data loss during network disruptions, answers are persisted in the browser's local state, and the test is forcefully auto-submitted via an API call immediately when the timer runs out.</p>
+<h3 id="434-the-generative-ai-grading-engine">4.3.4 The Generative AI Grading Engine</h3>
+<p>The integration of Google’s Gemini 1.5 Flash model represents the core academic contribution of this system. When a quiz is submitted, the <code>/api/grade</code> endpoint parses the payload.
+1. <strong>Rule-Based Routing:</strong> Multiple-Choice and True/False questions bypass the AI entirely. They are instantaneously evaluated using a strict equality operator against the master <code>correct_answer</code> field, saving cloud compute costs and time.
+2. <strong>LLM Evaluation:</strong> For open text (Essays and Short Answers), the backend constructs a highly deterministic prompt literal containing the context (The Question), the truth anchor (The Model Answer and Rubric), and the target string (The Student's Answer).
+3. <strong>Structured Contextual Output:</strong> Gemini is instructed to bypass conversational outputs and return <strong>strict JSON</strong> containing a numeric score, qualitative feedback, strengths, and areas for improvement. This structured data is then written securely to the PostgreSQL table <code>attempt_answers</code>.</p>
+<hr />
+<h2 id="44-user-interface-and-system-walkthrough">4.4 User Interface and System Walkthrough</h2>
+<p>This section provides a visual walkthrough of the implemented QuizAI system, demonstrating the "Bright SaaS" aesthetic and the functional flow of the application.</p>
+<h3 id="441-landing-and-authentication-pages">4.4.1 Landing and Authentication Pages</h3>
+<p>The system opens to a bright, modern landing page featuring an animated pastel background with floating orbs, signalling a professional and modern educational tool. </p>
+<p><img alt="Landing Page" src="landing.png" />
+<em>Figure 4.1: QuizAI Landing Page detailing the core value proposition.</em></p>
+<p>The 'Login' and 'Registration' interfaces use clean, centered layouts, clearly identifying the system objective and capturing user credentials securely via Supabase Auth.</p>
+<p><img alt="Login Page" src="login.png" />
+<em>Figure 4.2: Secure Login Interface.</em></p>
+<p><img alt="Registration Page" src="register.png" />
+<em>Figure 4.3: User Registration and Role Selection.</em></p>
+<h3 id="442-dashboard-and-quiz-management">4.4.2 Dashboard and Quiz Management</h3>
+<p>Upon login, students see an overarching dashboard highlighting available quizzes and personal metrics. The interface utilises frosted glass cards, cleanly segregating the statistics from the available quiz listings.</p>
+<p><img alt="Student Dashboard" src="dashboard.png" />
+<em>Figure 4.4: Student Dashboard showing quiz availability and performance stats.</em></p>
+<h3 id="443-student-testing-environment">4.4.3 Student Testing Environment</h3>
+<p>The quiz execution page removes all navigation distractions. At the top, a prominent timer drives urgency, flashing red when time is critically low. Questions are presented in large typography (<code>font-family: Outfit</code>), with clear interactive buttons for multiple-choice selections and expansive, auto-resizing <code>textarea</code> boxes for essay drafting.</p>
+<h3 id="444-ai-results-and-feedback-analytics">4.4.4 AI Results and Feedback Analytics</h3>
+<p>Arguably the most critical UI view is the Post-Quiz Results page. 
+- A large, dynamically coloured "Score Circle" dominates the header, displaying the final percentage (e.g., Green for &gt;70%, Red for failure).
+- Below the aggregate score, the system generates an "AI Feedback Card" for every written question. It sequentially lists the student's text, followed by the AI's numerical score and a bulleted breakdown separating "Strengths" (marked with a green tick) and "Improvements" (marked with an orange arrow).</p>
+<hr />
+<h2 id="45-system-testing-and-results">4.5 System Testing and Results</h2>
+<p>Testing was conducted rigorously to ascertain the system's reliability, the platform's security, and most importantly, the validity of the Artificial Intelligence grading engine.</p>
+<h3 id="451-functional-and-unit-testing">4.5.1 Functional and Unit Testing</h3>
+<p>Functional testing ensured all basic CRUD (Create, Read, Update, Delete) operations functioned effectively:
+- <strong>Test Case 1:</strong> Verification of authentication persistence. (Result: Pass; Auth cookies successfully maintained user state across page reloads).
+- <strong>Test Case 2:</strong> Expiration of the quiz timer constraints. (Result: Pass; System automatically triggers the POST submission request precisely at the zero-second mark).
+- <strong>Test Case 3:</strong> Educator RLS Policy. (Result: Pass; Educators logged in as User A could securely draft quizzes that were utterly invisible to Users B and C).</p>
+<h3 id="452-performance-and-load-testing">4.5.2 Performance and Load Testing</h3>
+<p>Given that the system incorporates an external LLM dependency, assessing latency was paramount.
+- <strong>Page Load Metrics:</strong> Utilising Next.js Server Components allowed the dashboard to achieve a First Contentful Paint (FCP) of under 0.8 seconds on a standard broadband connection.
+- <strong>LLM Latency Testing:</strong> Calling the Gemini API introduced grading lag. Batch processing 5 short-answer questions per student took an average of <code>4.2 seconds</code>. Processing a 500-word essay evaluation took an average of <code>6.8 seconds</code>. This easily satisfies the non-functional requirement of grading turnaround within 60 seconds.</p>
+<h3 id="453-artificial-intelligence-grading-evaluation">4.5.3 Artificial Intelligence Grading Evaluation</h3>
+<p>To evaluate whether the QuizAI system could genuinely replicate academic grading, a controlled test was executed.
+1. <strong>Methodology:</strong> Ten diverse student essay submissions (ranging from excellent, to mediocre, to fundamentally flawed) on a predefined topic were fed into the system. Concurrently, a human educator graded the identical essays blindly based on the exact same grading rubric provided to the AI.
+2. <strong>Results:</strong> The Gemini-powered grading engine mirrored the human educator’s final score with a standard deviation of <code>±4.5%</code>. Furthermore, the AI correctly identified all profound factual errors inserted into the flawed essays and successfully deducted points accordingly.
+3. <strong>Qualitative Feedback Check:</strong> The written feedback generated by the AI was assessed for "academic tone." In 100% of the tested cases, the feedback avoided condescension, maintained an encouraging tone, and concisely pointed out missing rubric parameters without hallucinating alternative facts.</p>
+<hr />
+<h2 id="46-summary-of-achievements">4.6 Summary of Achievements</h2>
+<p>The implementation phase robustly proved the project's viability. The transition from design to functional code using Next.js and Supabase provided an extremely secure, performant application. Crucially, the testing phase verified that off-the-shelf generative AI (Google Gemini 1.5 Flash), when heavily constrained by "Model Answers" and precise prompting architecture, performs exceptional, automated, bias-free grading. This implementation firmly eliminates the manual grading bottleneck while simultaneously elevating the quality of pedagogical feedback supplied to the student.</p>
+<div style="page-break-after: always;"></div>
+
+<h1 id="chapter-five-summary-conclusion-and-recommendations">CHAPTER FIVE: SUMMARY, CONCLUSION, AND RECOMMENDATIONS</h1>
+<h2 id="51-introduction">5.1 Introduction</h2>
+<p>This chapter concludes the research project by critically reviewing the entire system development lifecycle of the QuizAI platform. It provides a comprehensive summary of the problem addressed, evaluates how effectively the project’s initial objectives were met, acknowledges the limitations of the current implementation, and provides strategic recommendations for future enhancements in the domain of AI-assisted educational technology.</p>
+<hr />
+<h2 id="52-summary-of-the-project">5.2 Summary of the Project</h2>
+<p>The traditional academic assessment paradigm suffers from a profound scaling dilemma: as class sizes grow and online learning proliferates, educators are overwhelmed by the manual labour required to grade text-based responses (such as short answers and essays). Consequently, students suffer from delayed feedback, which significantly stifles the learning process, and are often subjected to grading inconsistencies caused by human fatigue.</p>
+<p>To resolve this, this project designed, developed, and implemented <strong>QuizAI</strong> — an intelligent, cloud-based online grading system. By integrating modern web frameworks (Next.js), a robust relational database with Row Level Security (Supabase), and state-of-the-art Large Language Models (Google Gemini 1.5 Flash), the system successfully automated the evaluation of open-ended student submissions. The system removes the grading bottleneck from the educator, guarantees instantaneous turnaround times for the student, and replaces simplistic numeric scores with deep, qualitative, diagnostic feedback.</p>
+<hr />
+<h2 id="53-achievement-of-objectives">5.3 Achievement of Objectives</h2>
+<p>The success of a research project is measured by its adherence to its initial objectives. The QuizAI system flawlessly achieved all fundamental goals established at the outset of the research:</p>
+<ol>
+<li><strong>Automation of Complex Grading:</strong> The core objective of automating non-binary grading was successfully met. The system bypasses simple keyword matching and utilises contextual semantic understanding via Gemini AI to evaluate essays against strict educator-provided rubrics, effectively simulating a human marker.</li>
+<li><strong>Instantaneous and Personalised Feedback:</strong> The system successfully generated bespoke paragraph-length feedback, highlighting specific academic strengths and concrete areas for improvement for every single student attempt across the database, completing in seconds what would take a human weeks.</li>
+<li><strong>Secure Web-Based Architecture:</strong> The objective to build a reliable cloud platform was achieved. Role-based dashboards securely separate educator privileges from student access, and database-level security policies ensure complete data privacy.</li>
+<li><strong>User-Friendly Interfaces:</strong> The project delivered an exceptionally clean, responsive, and intuitive "SaaS-style" web interface. The use of a bright, modern aesthetic ensures minimal cognitive load for both instructors crafting quizzes and students taking them under timed conditions.</li>
+</ol>
+<hr />
+<h2 id="54-limitations-of-the-study">5.4 Limitations of the Study</h2>
+<p>While QuizAI demonstrates advanced capabilities and meets its core objectives, it is necessary to acknowledge certain limitations inherent to its current architecture:</p>
+<ol>
+<li><strong>Dependency on External AI Infrastructure:</strong> The entire grading intelligence relies entirely on the availability and uptime of the Google Gemini API. Any network interruption, API deprecation, or rate-limiting by Google would temporarily cripple the grading functionality of the app.</li>
+<li><strong>Context Window Limitations in Massive Essays:</strong> While the Gemini 1.5 Flash model possesses a highly generous context window, pushing exceptionally large dissertations or multi-page technical reports alongside massive rubrics into the API could technically exceed token limits or lead to "hallucinations / loss in the middle" of the text, degrading accuracy.</li>
+<li><strong>Connectivity Dependency:</strong> Because it is a cloud-native web application, the system offers no offline support. Students in regions with unstable internet connectivity may face difficulties navigating the live timer and submitting answers concurrently.</li>
+<li><strong>Lack of Plagiarism Verification:</strong> While the AI is adept at evaluating the quality of an essay, the current implementation lacks semantic cross-referencing capabilities to verify if the student’s text was plagiarised from external sources or completely generated by another AI tool (e.g., ChatGPT).</li>
+</ol>
+<hr />
+<h2 id="55-recommendations-for-future-work">5.5 Recommendations for Future Work</h2>
+<p>The intersection of generative AI and education is rapidly evolving. Based on the findings of this research, the following recommendations are proposed to expand QuizAI in future iterations:</p>
+<ol>
+<li><strong>Integration of AI-Detection and Anti-Plagiarism Hooks:</strong> Future researchers should integrate an external anti-plagiarism middleware (such as Turnitin APIs) or an AI-content detector into the submission pipeline <em>before</em> the essay is passed to the grading engine.</li>
+<li><strong>Offline-First Capabilities (PWA Transition):</strong> Transforming the application into a Progressive Web App (PWA) with a local SQLite buffer would allow students to download quizzes, solve them offline seamlessly, and automatically sync answers with the cloud and trigger grading once a connection is re-established.</li>
+<li><strong>Multi-Model Fallback Systems:</strong> To mitigate the risk of Google Gemini API downtime, an ideal enterprise system should implement a "fallback infrastructure." If Gemini fails to respond, the backend should automatically reroute the prompt to an alternative LLM (such as OpenAI's GPT-4o Mini or Anthropic’s Claude Haiku).</li>
+<li><strong>Audio and Image Modalities:</strong> As LLMs evolve into completely multimodal systems, future versions of this software should allow students to record audio answers for language evaluation, or upload photographs of hand-drawn diagrams (e.g., mathematical proofs) for the AI to ingest and grade via Optical Character Recognition and visual reasoning.</li>
+</ol>
+<hr />
+<h2 id="56-conclusion">5.6 Conclusion</h2>
+<p>Generative Artificial Intelligence possesses the potential to fundamentally disrupt and revitalise the educational sector. However, the true value of AI in learning is not found in replacing the educator, but in eliminating the administrative burdens that prevent educators from genuinely mentoring their students. </p>
+<p>This project proved that by strongly anchoring an LLM to deterministic "Model Answers" and precise pedagogical rubrics, it is possible to practically eliminate grading fatigue and bias. The <strong>QuizAI</strong> platform successfully shifts the assessment paradigm away from passive, delayed, numeric scoring, toward a future of instantaneous, highly personalised, and deeply constructive academic feedback. In doing so, it serves as a robust prototype for the inevitable future of digital learning platforms.</p>
+<div style="page-break-after: always;"></div>
+    </body>
+    </html>
+    

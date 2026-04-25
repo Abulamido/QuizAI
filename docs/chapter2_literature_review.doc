@@ -1,0 +1,260 @@
+
+    <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+    <head><meta charset='utf-8'><title>Document</title>
+    <style>
+        body { font-family: 'Times New Roman', serif; line-height: 1.6; max-width: 800px; margin: auto; padding: 20px; }
+        h1 { text-align: center; color: #2c3e50; font-size: 24pt; margin-bottom: 20px; }
+        h2 { color: #34495e; border-bottom: 2px solid #34495e; padding-bottom: 5px; margin-top: 30px; font-size: 18pt; }
+        h3 { color: #7f8c8d; margin-top: 20px; font-size: 14pt; }
+        p { margin-bottom: 15px; text-align: justify; }
+        li { margin-bottom: 8px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+        code { background-color: #f4f4f4; padding: 2px 4px; border-radius: 4px; font-family: 'Courier New', monospace; }
+        pre { background-color: #f4f4f4; padding: 15px; border-radius: 8px; overflow-x: auto; border: 1px solid #ddd; }
+        blockquote { border-left: 5px solid #eee; padding-left: 20px; color: #666; font-style: italic; margin-bottom: 20px; }
+        img { max-width: 100%; height: auto; display: block; margin: 20px auto; }
+    </style>
+    </head>
+    <body>
+    <h1 id="chapter-two-literature-review">CHAPTER TWO: LITERATURE REVIEW</h1>
+<h2 id="online-quiz-system-with-artificial-intelligence-grading">Online Quiz System with Artificial Intelligence Grading</h2>
+<hr />
+<h2 id="21-introduction">2.1 Introduction</h2>
+<p>This chapter provides a systematic review of the literature relevant to the development of an AI-powered online quiz and grading system. The review is organised thematically, moving from the broad landscape of e-learning and online assessment, to the specific domain of Natural Language Processing (NLP) and Automated Essay Scoring (AES), to a comparative analysis of existing systems. The chapter concludes by identifying the gaps in existing literature and systems that this project addresses, and articulates the theoretical framework underpinning its design.</p>
+<hr />
+<h2 id="22-overview-of-e-learning-and-online-assessment">2.2 Overview of E-Learning and Online Assessment</h2>
+<h3 id="221-the-evolution-of-e-learning">2.2.1 The Evolution of E-Learning</h3>
+<p>E-learning — broadly defined as learning facilitated by electronic technologies — has evolved through several distinct generations. The first generation (1960s–1990s) comprised Computer-Assisted Instruction (CAI) and Computer-Based Training (CBT) systems. These early systems, such as the PLATO system developed at the University of Illinois, delivered pre-programmed instructional content and conducted rule-based testing of factual recall (Graziadei et al., 1997).</p>
+<p>The second generation (1990s–2000s) saw the emergence of internet-based learning management systems (LMS). Platforms such as Blackboard (1998), Moodle (2002), and WebCT transformed the delivery of educational content, enabling asynchronous learning, discussion forums, and online grade management. Automated grading in this era was limited to objective question types through exact-match comparison.</p>
+<p>The third generation (2010s–present) is characterised by the integration of artificial intelligence, adaptive learning, and learning analytics into educational platforms. MOOCs (Massive Open Online Courses) — including Coursera, edX, Khan Academy, and Udacity — demonstrated the potential of online education at global scale but exposed the challenge of scalably grading constructed responses.</p>
+<h3 id="222-online-assessment-types-and-challenges">2.2.2 Online Assessment: Types and Challenges</h3>
+<p>Garrison and Anderson (2003) define assessment in e-learning as "the process of gathering data about what and how well students are learning, and using those data to inform subsequent instruction." Online assessment types include:</p>
+<ul>
+<li><strong>Selected-response items</strong>: MCQ, True/False, matching — can be graded algorithmically</li>
+<li><strong>Constructed-response items</strong>: Short answer, essay, problem-solving tasks — require evaluation of meaning, not just form</li>
+<li><strong>Performance-based assessments</strong>: Portfolio, project artefacts — require human or structured AI evaluation</li>
+</ul>
+<p>The fundamental challenge is that constructed-response items, which are most effective for assessing higher-order cognitive skills (Bloom, 1956), cannot be graded by simple pattern-matching algorithms. Brown et al. (2020) note that it is precisely this category of assessment — rich, complex, open-ended — where human cognition was long considered irreplaceable. It is also this category where AI has made the most dramatic recent strides.</p>
+<h3 id="223-benefits-of-online-assessment">2.2.3 Benefits of Online Assessment</h3>
+<p>Numerous studies document the advantages of online assessment over paper-based alternatives. Marriott and Lau (2008) found that online assessments improve access, reduce logistical costs, and enable more frequent low-stakes testing. Dermo (2009) demonstrated that computer-based assessment is perceived by students as more efficient and less stressful than traditional examination formats. Rudd et al. (2008) showed that immediate feedback in online assessments significantly improves subsequent performance.</p>
+<hr />
+<h2 id="23-artificial-intelligence-in-education-aied">2.3 Artificial Intelligence in Education (AIEd)</h2>
+<h3 id="231-overview-of-aied">2.3.1 Overview of AIEd</h3>
+<p>Artificial Intelligence in Education (AIEd) is a multidisciplinary field at the intersection of computer science, cognitive science, and educational research. It encompasses the application of AI techniques to teaching, learning, and educational management problems. Key AIEd application domains include:</p>
+<ul>
+<li><strong>Intelligent Tutoring Systems (ITS)</strong>: Systems that provide personalised instruction by modelling student knowledge and delivering targeted feedback. The ALEKS system (Falmagne et al., 2013) uses knowledge space theory to guide mathematics learning.</li>
+<li><strong>Adaptive Learning Systems</strong>: Platforms that dynamically adjust content difficulty based on student performance (e.g., Carnegie Learning, Knewton).</li>
+<li><strong>Automated Essay Scoring (AES)</strong>: Systems that evaluate written essays using machine learning.</li>
+<li><strong>Learning Analytics</strong>: Data-driven analysis of learner behaviour and outcomes.</li>
+<li><strong>Natural Language Processing for Education</strong>: Including question generation, reading comprehension assessment, and dialogue-based tutoring.</li>
+</ul>
+<p>Baker and Inventado (2014) note that AIEd's ultimate aspiration is to replicate the one-on-one tutoring relationship — Bloom's (1984) "two-sigma problem" — for every learner, through personalised, adaptive, real-time engagement.</p>
+<h3 id="232-large-language-models-capabilities-and-educational-applications">2.3.2 Large Language Models: Capabilities and Educational Applications</h3>
+<p>The introduction of transformer-based language models (Vaswani et al., 2017) marked a paradigm shift in NLP. The transformer architecture, with its self-attention mechanism, enabled models to capture long-range contextual dependencies in text with unprecedented accuracy. Subsequent scaling — BERT (Devlin et al., 2019), GPT-3 (Brown et al., 2020), GPT-4 (OpenAI, 2023), and Gemini (Google DeepMind, 2023) — produced LLMs capable of sophisticated language understanding and generation.</p>
+<p>Google's Gemini family of models, employed in this project, is a multimodal model trained on a diverse corpus of text, code, and image data. Gemini 1.5 Flash, the specific variant used for AI grading in this project, is optimised for speed and efficiency while maintaining strong performance on reasoning and language understanding tasks. Google (2024) reports that Gemini 1.5 Flash achieves state-of-the-art performance on benchmarks including MMLU (Massive Multitask Language Understanding) and outperforms earlier models on academic reasoning tasks.</p>
+<p>Key capabilities relevant to educational grading include:
+- <strong>Semantic understanding</strong>: Identifying the meaning of an answer, not merely its surface form
+- <strong>Factual verification</strong>: Assessing whether claims in an answer are correct
+- <strong>Argument evaluation</strong>: Assessing the logical structure and quality of argumentation
+- <strong>Rubric adherence</strong>: Grading according to specified criteria (when provided)
+- <strong>Feedback generation</strong>: Producing coherent, constructive, specific feedback</p>
+<hr />
+<h2 id="24-automated-essay-scoring-aes-a-historical-survey">2.4 Automated Essay Scoring (AES): A Historical Survey</h2>
+<h3 id="241-early-systems">2.4.1 Early Systems</h3>
+<p>The first computational system for essay grading, Project Essay Grade (PEG), was developed by Ellis Page in 1966. PEG used surface features of text — word length, sentence length, punctuation density — as proxies for essay quality. While innovative, PEG assessed stylistic features that correlate with quality rather than directly measuring semantic content or argumentation.</p>
+<p>The Electronic Essay Rater (e-rater), developed at Educational Testing Service (ETS), introduced more sophisticated NLP features — syntactic analysis, content vector analysis, discourse structure — and achieved correlations above 0.90 with human graders on standardised tests such as the GMAT (Burstein et al., 2004). The Intelligent Essay Assessor (IEA) by Pearson used Latent Semantic Analysis (LSA) to measure conceptual similarity between student answers and reference material.</p>
+<h3 id="242-machine-learning-approaches">2.4.2 Machine Learning Approaches</h3>
+<p>The second wave of AES systems employed traditional machine learning classifiers (Support Vector Machines, Random Forest) trained on handcrafted linguistic features. Phandi et al. (2015) demonstrated that domain-adaptation techniques could improve AES generalisability across essay topics. The Automated Student Assessment Prize (ASAP) competition, run on Kaggle in 2012, catalysed substantial research, producing models achieving weighted kappa scores of 0.80+ with human graders.</p>
+<h3 id="243-deep-learning-and-transformer-based-systems">2.4.3 Deep Learning and Transformer-Based Systems</h3>
+<p>LSTM-based recurrent neural networks (Taghipour &amp; Ng, 2016) substantially improved AES by learning hierarchical text representations automatically. The introduction of BERT-based fine-tuning (Rodriquez et al., 2019; Uto &amp; Okano, 2021) pushed kappa correlations above 0.85 for standard essay datasets.</p>
+<p>The most recent frontier employs LLMs — GPT-3, GPT-4, Gemini — either fine-tuned for AES tasks or used via prompt engineering (zero-shot or few-shot). Xiao et al. (2023) demonstrated that GPT-4 achieves human-level grading performance on essays when provided with rubric-based instructions in the prompt. Mizumoto and Eguchi (2023) showed that Generative AI can provide detailed, coherent feedback comparable to expert human tutors. This "prompt-based" approach — which this project employs via the Gemini API — eliminates the need for labelled grading datasets and task-specific fine-tuning, dramatically reducing implementation complexity while preserving state-of-the-art performance.</p>
+<h3 id="244-ai-grading-of-short-answers">2.4.4 AI Grading of Short Answers</h3>
+<p>Short answer grading (SAG) — where responses range from a few words to several sentences — presents distinct challenges from essay grading. Burrows et al. (2015) provide a comprehensive survey distinguishing SAG from AES and noting that SAG systems must evaluate semantic similarity to a reference answer (knowledge-bounded), while AES systems evaluate quality along multiple rubric dimensions (knowledge-unbounded).</p>
+<p>Dzikovska et al. (2013) developed the Beetle II system for short answer grading in science education, achieving promising results on constrained domains. Mohler and Mihalcea (2009) used unsupervised text similarity methods. Recent transformer-based approaches (Sung et al., 2019; Bonthu et al., 2021) report kappa correlations of 0.70–0.90 with human graders on benchmark datasets.</p>
+<hr />
+<h2 id="25-review-of-existing-online-quiz-and-grading-systems">2.5 Review of Existing Online Quiz and Grading Systems</h2>
+<h3 id="251-google-forms">2.5.1 Google Forms</h3>
+<p><strong>Description:</strong> Google Forms is a free, widely-used web-based form and survey builder that supports basic quiz functionality, including MCQ, checkboxes, and short text responses.</p>
+<p><strong>Grading Capabilities:</strong> Google Forms supports automatic grading for MCQ and checkbox items through exact-match comparison. Short text responses support limited exact-match grading but do not support semantic evaluation.</p>
+<p><strong>Limitations:</strong> No essay grading, no AI integration, no analytics beyond basic summary statistics, no time-limited assessments, no role-based access control. Feedback is limited to pre-entered answer explanation text.</p>
+<p><strong>Gap:</strong> Google Forms is suitable for basic factual recall testing but cannot assess higher-order thinking or provide personalised learning feedback.</p>
+<h3 id="252-kahoot">2.5.2 Kahoot!</h3>
+<p><strong>Description:</strong> Kahoot is a game-based learning platform enabling interactive, competitive quizzes in live classroom settings.</p>
+<p><strong>Grading Capabilities:</strong> Supports MCQ only. Points are awarded based on speed and accuracy.</p>
+<p><strong>Limitations:</strong> Limited to live sessions, MCQ only, no open-ended responses, no AI grading, gamified format may not be appropriate for summative assessment.</p>
+<p><strong>Gap:</strong> Not suitable for formal summative assessment. Cannot grade subjective responses.</p>
+<h3 id="253-moodle-quiz">2.5.3 Moodle Quiz</h3>
+<p><strong>Description:</strong> Moodle is a widely-deployed open-source LMS used in universities globally. Its Quiz module supports a variety of question types and includes sophisticated configuration options.</p>
+<p><strong>Grading Capabilities:</strong> Supports MCQ, True/False, and some short-answer types with exact-match or regular expression-based automatic grading. Essay questions must be manually graded by instructors. Moodle 4.x introduced AI essay feedback via integration with external APIs (experimental feature in 2024).</p>
+<p><strong>Limitations:</strong> Essay and constructed-response grading remains largely manual. The AI feedback feature is limited and requires additional plugin installation. Moodle's interface is complex and often characterised as non-intuitive by student users.</p>
+<p><strong>Gap:</strong> While comprehensive, Moodle's AI grading remains underdeveloped and requires substantial configuration. The user experience is dated compared to modern web applications.</p>
+<h3 id="254-gradescope">2.5.4 Gradescope</h3>
+<p><strong>Description:</strong> Gradescope is a platform used by universities for grading paper-based and digital assignments, including programming assignments, using AI-assisted clustering and grouping features.</p>
+<p><strong>Grading Capabilities:</strong> Uses AI to group similar student answers, allowing graders to apply a single rubric to a cluster of responses. Provides partial credit and detailed feedback. Supports OCR for paper-based assignments.</p>
+<p><strong>Limitations:</strong> Does not automatically assign scores without human involvement. Functions as a human-in-the-loop grading acceleration tool rather than a fully automated grading system. Subscription cost is significant for resource-constrained institutions.</p>
+<p><strong>Gap:</strong> Gradescope reduces grading effort but does not eliminate the need for human grading. Fully autonomous AI scoring is not its design goal.</p>
+<h3 id="255-quizlet-and-quizizz">2.5.5 Quizlet and Quizizz</h3>
+<p><strong>Description:</strong> Both platforms are interactive quiz and flashcard tools popular in K-12 and informal learning contexts.</p>
+<p><strong>Grading Capabilities:</strong> MCQ and fill-in-the-blank items with automatic grading. Some AI features for generating questions from user content.</p>
+<p><strong>Limitations:</strong> No essay grading, no personalised feedback, no educator analytics at institutional level. Not designed for formal summative assessment in higher education.</p>
+<p><strong>Gap:</strong> Neither platform can grade constructed responses or provide AI-generated personalised feedback.</p>
+<h3 id="256-summary-of-gap-analysis">2.5.6 Summary of Gap Analysis</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Google Forms</th>
+<th>Kahoot</th>
+<th>Moodle</th>
+<th>Gradescope</th>
+<th><strong>QuizAI (This Project)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MCQ Grading</td>
+<td>✓ Auto</td>
+<td>✓ Auto</td>
+<td>✓ Auto</td>
+<td>✓ Semi</td>
+<td>✓ Auto</td>
+</tr>
+<tr>
+<td>T/F Grading</td>
+<td>✓ Auto</td>
+<td>✗</td>
+<td>✓ Auto</td>
+<td>✓ Semi</td>
+<td>✓ Auto</td>
+</tr>
+<tr>
+<td>Short Answer AI Grading</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗ Semi</td>
+<td><strong>✓ Full AI</strong></td>
+</tr>
+<tr>
+<td>Essay AI Grading</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗ Semi</td>
+<td><strong>✓ Full AI</strong></td>
+</tr>
+<tr>
+<td>Instant Results</td>
+<td>✓ MCQ only</td>
+<td>✓</td>
+<td>✓ MCQ</td>
+<td>✗</td>
+<td><strong>✓ All types</strong></td>
+</tr>
+<tr>
+<td>Personalised AI Feedback</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td><strong>✓</strong></td>
+</tr>
+<tr>
+<td>Timed Quizzes</td>
+<td>✗</td>
+<td>✓</td>
+<td>✓</td>
+<td>✗</td>
+<td><strong>✓</strong></td>
+</tr>
+<tr>
+<td>Analytics Dashboard</td>
+<td>Basic</td>
+<td>Basic</td>
+<td>✓</td>
+<td>✓</td>
+<td><strong>✓</strong></td>
+</tr>
+<tr>
+<td>Free to Use</td>
+<td>✓</td>
+<td>Freemium</td>
+<td>✓</td>
+<td>✗</td>
+<td><strong>✓</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="26-related-work">2.6 Related Work</h2>
+<h3 id="261-prompt-based-llm-grading">2.6.1 Prompt-Based LLM Grading</h3>
+<p>Mizumoto and Eguchi (2023) evaluated ChatGPT's (GPT-3.5/GPT-4) grading of second-language writing essays using analytic rubric-based prompts. They found that GPT-4 grading correlated at 0.80+ with expert human graders on holistic scores and 0.70+ on individual analytic dimensions. Crucially, the feedback generated was rated as "helpful" or "very helpful" by student evaluators in 78% of cases — comparable to human teacher feedback. This supports the central technical premise of this project.</p>
+<h3 id="262-automated-grading-in-nigerian-universities">2.6.2 Automated Grading in Nigerian Universities</h3>
+<p>Shittu et al. (2011) conducted a study on e-assessment in Nigerian tertiary institutions, finding widespread interest in automated grading among academic staff constrained by large class sizes, but noting inadequate infrastructure and lack of integrated tools as the primary barriers to adoption. The QuizAI system is designed with these constraints in mind — it uses cloud-based Supabase for database hosting (no on-premise infrastructure required), Google Gemini's free tier for AI grading, and a minimal deployment footprint.</p>
+<h3 id="263-immediate-feedback-and-learning-outcomes">2.6.3 Immediate Feedback and Learning Outcomes</h3>
+<p>Mory (2004) reviewed 43 studies on feedback in computer-based instruction, finding that immediate, specific, elaborated feedback (i.e., feedback that explains the correct answer and reasoning, not just marks it wrong) had the largest positive effect on learning outcomes. The AI grading in this project is explicitly designed to generate elaborated feedback — including specific strengths, specific improvements, and explanatory commentary — aligning with the highest-impact feedback modality.</p>
+<hr />
+<h2 id="27-theoretical-framework">2.7 Theoretical Framework</h2>
+<p>This project is grounded in three complementary theoretical frameworks:</p>
+<h3 id="271-blooms-taxonomy-of-educational-objectives-revised">2.7.1 Bloom's Taxonomy of Educational Objectives (Revised)</h3>
+<p>Bloom's (1956) taxonomy, as revised by Krathwohl et al. (2002), organises cognitive learning objectives into six levels:
+1. Remember (recall facts)
+2. Understand (interpret, explain)
+3. Apply (use knowledge in new situations)
+4. Analyse (draw connections, compare)
+5. Evaluate (judge, assess, critique)
+6. Create (design, produce)</p>
+<p>Traditional automated grading (MCQ) tests primarily at levels 1–2. AI grading of constructed responses enables assessment at levels 3–6. QuizAI's multi-question-type architecture explicitly supports this full range, making it a tool for comprehensive higher education assessment.</p>
+<h3 id="272-the-theory-of-formative-assessment-black-wiliam-1998">2.7.2 The Theory of Formative Assessment (Black &amp; Wiliam, 1998)</h3>
+<p>Black and Wiliam's (1998) seminal meta-analysis established that formative assessment — characterised by frequent, low-stakes assessment with specific, actionable feedback — dramatically improves learning outcomes. The average effect size across the 250 studies they reviewed was 0.40–0.70 standard deviations. Three conditions distinguish effective formative assessment:</p>
+<ol>
+<li><strong>Clear learning objectives</strong>: QuizAI allows educators to specify model answers and rubrics</li>
+<li><strong>Actionable feedback</strong>: Gemini generates specific strengths and improvements</li>
+<li><strong>Frequency of assessment</strong>: The platform supports unlimited quiz creation and administration</li>
+</ol>
+<h3 id="273-constructivism-and-scaffolded-learning">2.7.3 Constructivism and Scaffolded Learning</h3>
+<p>Vygotsky's (1978) concept of the Zone of Proximal Development (ZPD) and Bruner's (1966) scaffolding theory suggest that learners develop most effectively when they receive support calibrated to their current ability — help at the edge of what they can do independently. AI-generated feedback that identifies specific gaps and improvement areas provides this calibrated scaffolding, guiding students toward mastery rather than simply informing them of failure.</p>
+<hr />
+<h2 id="28-summary">2.8 Summary</h2>
+<p>This chapter has established the intellectual and empirical foundations for the QuizAI project. The review demonstrates:</p>
+<ol>
+<li>E-learning has evolved to a point where AI integration in assessment is technically feasible and educationally justified.</li>
+<li>Automated grading of constructed responses — historically a human-only task — is now achievable at near-human accuracy using LLMs like Google Gemini.</li>
+<li>Existing online quiz tools exhibit a consistent gap: none combines free access, multi-question-type support, AI grading of open-ended responses, and personalised feedback in a single platform.</li>
+<li>The educational research literature strongly supports the value of immediate, specific, elaborated feedback — precisely what AI grading can provide at scale.</li>
+<li>The project is theoretically grounded in Bloom's Taxonomy, Formative Assessment Theory, and Constructivism.</li>
+</ol>
+<p>Chapter Three will proceed to document the research methodology, system analysis, and detailed system design that translate these foundations into a concrete technical system.</p>
+<hr />
+<h2 id="references">References</h2>
+<p>Baker, R. S., &amp; Inventado, P. S. (2014). Educational data mining and learning analytics. In <em>Learning analytics: From research to practice</em> (pp. 61–75). Springer.</p>
+<p>Black, P., &amp; Wiliam, D. (1998). Assessment and classroom learning. <em>Assessment in Education: Principles, Policy &amp; Practice</em>, 5(1), 7–74.</p>
+<p>Bloom, B. S. (1956). <em>Taxonomy of educational objectives, handbook I: The cognitive domain</em>. David McKay.</p>
+<p>Bloom, B. S. (1984). The 2 sigma problem: The search for methods of group instruction as effective as one-to-one tutoring. <em>Educational Researcher</em>, 13(6), 4–16.</p>
+<p>Brown, T., et al. (2020). Language models are few-shot learners. <em>Advances in Neural Information Processing Systems</em>, 33, 1877–1901.</p>
+<p>Burrows, S., Gurevych, I., &amp; Stein, B. (2015). The eras and trends of automatic short answer grading. <em>International Journal of Artificial Intelligence in Education</em>, 25(1), 60–117.</p>
+<p>Burstein, J., Chodorow, M., &amp; Leacock, C. (2004). Automated essay evaluation: The e-rater® system. <em>AI Magazine</em>, 25(3), 27–36.</p>
+<p>Devlin, J., et al. (2019). BERT: Pre-training of deep bidirectional transformers for language understanding. <em>Proceedings of NAACL-HLT 2019</em>.</p>
+<p>Dermo, J. (2009). E-assessment and the student learning experience. <em>British Journal of Educational Technology</em>, 40(2), 203–214.</p>
+<p>Dzikovska, M., et al. (2013). SemEval-2013 Task 7: The Joint Student Response Analysis and 8th Recognizing Textual Entailment Challenge. <em>SemEval-2013</em>.</p>
+<p>Garrison, D. R., &amp; Anderson, T. (2003). <em>E-learning in the 21st century</em>. Routledge.</p>
+<p>Google DeepMind. (2023). <em>Gemini: A family of highly capable multimodal models</em>. Technical report. https://deepmind.google</p>
+<p>Graesser, A. C., et al. (2000). Using latent semantic analysis to evaluate the contributions of students in AutoTutor. <em>Interactive Learning Environments</em>, 8(2), 129–147.</p>
+<p>Hattie, J., &amp; Timperley, H. (2007). The power of feedback. <em>Review of Educational Research</em>, 77(1), 81–112.</p>
+<p>Krathwohl, D. R. (2002). A revision of Bloom's taxonomy: An overview. <em>Theory into Practice</em>, 41(4), 212–218.</p>
+<p>Marriott, P., &amp; Lau, A. (2008). The use of on-line summative assessment in an undergraduate financial accounting course. <em>Journal of Accounting Education</em>, 26(2), 73–90.</p>
+<p>Mizumoto, A., &amp; Eguchi, M. (2023). Exploring the potential of using an AI language model for automated essay scoring. <em>Research Methods in Applied Linguistics</em>, 2(2), 100050.</p>
+<p>Mohler, M., &amp; Mihalcea, R. (2009). Text-to-text semantic similarity for automatic short answer grading. <em>Proceedings of EACL 2009</em>.</p>
+<p>Mory, E. H. (2004). Feedback research revisited. <em>Handbook of Research on Educational Communications and Technology</em>, 2, 745–783.</p>
+<p>Phandi, P., Chai, K. M. A., &amp; Ng, H. T. (2015). Flexible domain adaptation for automated essay scoring using correlated linear regression. <em>Proceedings of EMNLP 2015</em>.</p>
+<p>Ramesh, D., &amp; Sanampudi, S. K. (2022). An automated essay scoring systems: A systematic literature review. <em>Artificial Intelligence Review</em>, 55, 2495–2527.</p>
+<p>Shittu, A. J. K., Ogunlade, O. O., &amp; Nickson, L. (2011). A survey on the use of e-assessment in Nigerian tertiary institutions. <em>International Journal on New Trends in Education</em>, 2(3), 118–127.</p>
+<p>Taghipour, K., &amp; Ng, H. T. (2016). A neural approach to automated essay scoring. <em>Proceedings of EMNLP 2016</em>.</p>
+<p>Vaswani, A., et al. (2017). Attention is all you need. <em>Advances in Neural Information Processing Systems</em>, 30.</p>
+<p>Vygotsky, L. S. (1978). <em>Mind in society: The development of higher psychological processes</em>. Harvard University Press.</p>
+<p>Xiao, Y., et al. (2023). Evaluating reading comprehension exercises generated by LLMs: A showcase of ChatGPT in education applications. <em>Proceedings of BEA 2023</em>.</p>
+    </body>
+    </html>
+    

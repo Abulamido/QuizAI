@@ -1,0 +1,352 @@
+
+    <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+    <head><meta charset='utf-8'><title>Document</title>
+    <style>
+        body { font-family: 'Times New Roman', serif; line-height: 1.6; max-width: 800px; margin: auto; padding: 20px; }
+        h1 { text-align: center; color: #2c3e50; font-size: 24pt; margin-bottom: 20px; }
+        h2 { color: #34495e; border-bottom: 2px solid #34495e; padding-bottom: 5px; margin-top: 30px; font-size: 18pt; }
+        h3 { color: #7f8c8d; margin-top: 20px; font-size: 14pt; }
+        p { margin-bottom: 15px; text-align: justify; }
+        li { margin-bottom: 8px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+        code { background-color: #f4f4f4; padding: 2px 4px; border-radius: 4px; font-family: 'Courier New', monospace; }
+        pre { background-color: #f4f4f4; padding: 15px; border-radius: 8px; overflow-x: auto; border: 1px solid #ddd; }
+        blockquote { border-left: 5px solid #eee; padding-left: 20px; color: #666; font-style: italic; margin-bottom: 20px; }
+        img { max-width: 100%; height: auto; display: block; margin: 20px auto; }
+    </style>
+    </head>
+    <body>
+    <h1 id="technical-documentation">TECHNICAL DOCUMENTATION</h1>
+<h2 id="quizai-online-quiz-with-ai-grading-system">QuizAI — Online Quiz with AI Grading System</h2>
+<hr />
+<h2 id="1-system-architecture-overview">1. System Architecture Overview</h2>
+<p>QuizAI is a full-stack web application built on a three-tier architecture:
+- <strong>Frontend</strong>: Next.js 14 (App Router) with React and TypeScript
+- <strong>Backend</strong>: Next.js API Routes (server-side Node.js runtime)
+- <strong>Database</strong>: Supabase (managed PostgreSQL with RLS)
+- <strong>AI Service</strong>: Google Gemini 1.5 Flash via REST API</p>
+<hr />
+<h2 id="2-directory-structure">2. Directory Structure</h2>
+<pre><code>quiz-ai-grading/
+├── src/
+│   ├── app/
+│   │   ├── globals.css                 Design system + all CSS
+│   │   ├── layout.tsx                  Root layout + metadata
+│   │   ├── page.tsx                    Landing page
+│   │   │
+│   │   ├── login/page.tsx              Email/password login
+│   │   ├── register/page.tsx           Registration (role selection)
+│   │   │
+│   │   ├── admin/
+│   │   │   ├── dashboard/page.tsx      Educator dashboard
+│   │   │   └── quiz/
+│   │   │       ├── create/page.tsx     2-step quiz builder
+│   │   │       └── [id]/results/
+│   │   │           └── page.tsx        Class results for a quiz
+│   │   │
+│   │   ├── student/
+│   │   │   └── dashboard/page.tsx      Student dashboard
+│   │   │
+│   │   ├── quiz/
+│   │   │   └── [id]/
+│   │   │       ├── page.tsx            Quiz-taking interface
+│   │   │       └── results/page.tsx    Student results + AI feedback
+│   │   │
+│   │   └── api/
+│   │       ├── grade/route.ts          POST: Trigger AI grading
+│   │       ├── quizzes/
+│   │       │   ├── route.ts            GET/POST: Quiz CRUD
+│   │       │   └── [id]/route.ts       PATCH/DELETE: Quiz update
+│   │       └── attempts/route.ts       POST/PATCH: Attempt management
+│   │
+│   └── lib/
+│       ├── gemini.ts                   Gemini AI grading functions
+│       ├── types.ts                    Shared TypeScript types
+│       └── supabase/
+│           ├── client.ts               Browser Supabase client
+│           └── server.ts               Server Supabase client
+│
+├── supabase/
+│   └── schema.sql                      Full DB schema + RLS policies
+│
+├── .env.local                          Environment variables (not committed)
+├── README.md                           Setup guide
+└── package.json
+</code></pre>
+<hr />
+<h2 id="3-api-reference">3. API Reference</h2>
+<h3 id="31-post-apigrade">3.1 POST /api/grade</h3>
+<p>Triggers AI grading for a completed quiz attempt.</p>
+<p><strong>Auth Required:</strong> Yes (JWT in cookies)</p>
+<p><strong>Request Body:</strong></p>
+<pre><code class="language-json">{
+  &quot;attemptId&quot;: &quot;uuid&quot;,
+  &quot;quizId&quot;: &quot;uuid&quot;
+}
+</code></pre>
+<p><strong>Process:</strong>
+1. Validates auth
+2. Fetches attempt + answers + questions from Supabase
+3. Routes each answer:
+   - MCQ/T-F → deterministic comparison
+   - Short answer → <code>gradeOpenEndedAnswer()</code> via Gemini
+   - Essay → <code>gradeEssay()</code> via Gemini
+4. Saves per-question scores + feedback
+5. Calculates total score, percentage, grade
+6. Updates attempt to <code>status: 'graded'</code></p>
+<p><strong>Response:</strong></p>
+<pre><code class="language-json">{
+  &quot;success&quot;: true,
+  &quot;totalScore&quot;: 18,
+  &quot;totalPossible&quot;: 25,
+  &quot;percentage&quot;: 72,
+  &quot;grade&quot;: &quot;C&quot;,
+  &quot;gradingResults&quot;: [...]
+}
+</code></pre>
+<hr />
+<h3 id="32-get-apiquizzes">3.2 GET /api/quizzes</h3>
+<p>Returns all quizzes created by the authenticated educator.</p>
+<p><strong>Auth Required:</strong> Yes (must have role = 'admin')</p>
+<p><strong>Response:</strong></p>
+<pre><code class="language-json">{
+  &quot;quizzes&quot;: [
+    {
+      &quot;id&quot;: &quot;uuid&quot;,
+      &quot;title&quot;: &quot;Introduction to Algorithms&quot;,
+      &quot;subject&quot;: &quot;Computer Science&quot;,
+      &quot;is_published&quot;: true,
+      &quot;total_marks&quot;: 50,
+      &quot;duration_minutes&quot;: 45,
+      &quot;created_at&quot;: &quot;2025-04-20T10:00:00Z&quot;
+    }
+  ]
+}
+</code></pre>
+<hr />
+<h3 id="33-post-apiquizzes">3.3 POST /api/quizzes</h3>
+<p>Creates a new quiz with questions.</p>
+<p><strong>Auth Required:</strong> Yes (admin only)</p>
+<p><strong>Request Body:</strong></p>
+<pre><code class="language-json">{
+  &quot;title&quot;: &quot;Data Structures Quiz&quot;,
+  &quot;description&quot;: &quot;Tests understanding of arrays, linked lists, and trees&quot;,
+  &quot;subject&quot;: &quot;Computer Science&quot;,
+  &quot;duration_minutes&quot;: 30,
+  &quot;pass_mark&quot;: 60,
+  &quot;questions&quot;: [
+    {
+      &quot;question_text&quot;: &quot;What is the time complexity of binary search?&quot;,
+      &quot;question_type&quot;: &quot;mcq&quot;,
+      &quot;options&quot;: [
+        {&quot;id&quot;: &quot;a1&quot;, &quot;text&quot;: &quot;O(n)&quot;, &quot;isCorrect&quot;: false},
+        {&quot;id&quot;: &quot;a2&quot;, &quot;text&quot;: &quot;O(log n)&quot;, &quot;isCorrect&quot;: true},
+        {&quot;id&quot;: &quot;a3&quot;, &quot;text&quot;: &quot;O(n²)&quot;, &quot;isCorrect&quot;: false},
+        {&quot;id&quot;: &quot;a4&quot;, &quot;text&quot;: &quot;O(1)&quot;, &quot;isCorrect&quot;: false}
+      ],
+      &quot;correct_answer&quot;: &quot;O(log n)&quot;,
+      &quot;max_score&quot;: 2
+    },
+    {
+      &quot;question_text&quot;: &quot;Explain the concept of recursion with an example.&quot;,
+      &quot;question_type&quot;: &quot;short_answer&quot;,
+      &quot;model_answer&quot;: &quot;Recursion is a programming technique where a function calls itself...&quot;,
+      &quot;rubric&quot;: &quot;Award 3 marks for correct definition, 2 marks for valid example&quot;,
+      &quot;max_score&quot;: 5
+    }
+  ]
+}
+</code></pre>
+<p><strong>Response:</strong></p>
+<pre><code class="language-json">{
+  &quot;quiz&quot;: {
+    &quot;id&quot;: &quot;newly-created-uuid&quot;,
+    &quot;title&quot;: &quot;Data Structures Quiz&quot;,
+    ...
+  }
+}
+</code></pre>
+<hr />
+<h3 id="34-patch-apiquizzesid">3.4 PATCH /api/quizzes/:id</h3>
+<p>Publishes or unpublishes a quiz.</p>
+<p><strong>Body:</strong> <code>{ "is_published": true | false }</code></p>
+<hr />
+<h3 id="35-delete-apiquizzesid">3.5 DELETE /api/quizzes/:id</h3>
+<p>Deletes a quiz and all associated questions and attempts.</p>
+<hr />
+<h3 id="36-post-apiattempts">3.6 POST /api/attempts</h3>
+<p>Starts a new quiz attempt or resumes an existing in-progress one.</p>
+<p><strong>Body:</strong> <code>{ "quizId": "uuid" }</code></p>
+<p><strong>Response:</strong> <code>{ "attemptId": "uuid", "resumed": false }</code></p>
+<hr />
+<h3 id="37-patch-apiattempts">3.7 PATCH /api/attempts</h3>
+<p>Saves a single answer (called as student navigates questions).</p>
+<p><strong>Body:</strong></p>
+<pre><code class="language-json">{
+  &quot;attemptId&quot;: &quot;uuid&quot;,
+  &quot;questionId&quot;: &quot;uuid&quot;,
+  &quot;studentAnswer&quot;: &quot;The answer text or selected option&quot;,
+  &quot;maxScore&quot;: 5
+}
+</code></pre>
+<hr />
+<h2 id="4-ai-grading-functions">4. AI Grading Functions</h2>
+<h3 id="41-gradeopenendedanswerquestion-studentanswer-modelanswer-maxscore-rubric">4.1 <code>gradeOpenEndedAnswer(question, studentAnswer, modelAnswer, maxScore, rubric?)</code></h3>
+<p>Located in <code>src/lib/gemini.ts</code>.</p>
+<p>Grades short-answer responses using Gemini with reference to a model answer and optional rubric.</p>
+<p><strong>Returns:</strong> <code>GradingResult</code></p>
+<pre><code class="language-typescript">interface GradingResult {
+  score: number          // Awarded score (0 to maxScore)
+  maxScore: number
+  percentage: number     // 0-100
+  feedback: string       // 2-3 sentence overall feedback
+  strengths: string[]    // List of positive aspects
+  improvements: string[] // List of areas to work on
+  grade: string          // 'A' | 'B' | 'C' | 'D' | 'F'
+}
+</code></pre>
+<h3 id="42-gradeessayquestion-studentanswer-maxscore-subjectcontext">4.2 <code>gradeEssay(question, studentAnswer, maxScore, subjectContext?)</code></h3>
+<p>Grades essay responses using a four-criterion rubric (Content 40%, Structure 20%, Analysis 20%, Language 20%).</p>
+<hr />
+<h2 id="5-database-schema-summary">5. Database Schema Summary</h2>
+<p>See <code>supabase/schema.sql</code> for complete SQL.</p>
+<h3 id="tables">Tables</h3>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profiles</code></td>
+<td>User accounts extending Supabase auth</td>
+</tr>
+<tr>
+<td><code>quizzes</code></td>
+<td>Quiz configurations</td>
+</tr>
+<tr>
+<td><code>questions</code></td>
+<td>Per-quiz questions</td>
+</tr>
+<tr>
+<td><code>quiz_attempts</code></td>
+<td>Student attempt records</td>
+</tr>
+<tr>
+<td><code>attempt_answers</code></td>
+<td>Per-question answers + AI scores</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-constraints">Key Constraints</h3>
+<ul>
+<li><code>quiz_attempts</code>: <code>status</code> ∈ ('in_progress', 'submitted', 'graded')</li>
+<li><code>questions</code>: <code>question_type</code> ∈ ('mcq', 'short_answer', 'essay', 'true_false')</li>
+<li><code>attempt_answers</code>: UNIQUE(attempt_id, question_id) — one answer per question per attempt</li>
+<li><code>profiles</code>: <code>role</code> ∈ ('student', 'admin')</li>
+</ul>
+<hr />
+<h2 id="6-environment-variables">6. Environment Variables</h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NEXT_PUBLIC_SUPABASE_URL</code></td>
+<td>Yes</td>
+<td>Supabase project URL</td>
+</tr>
+<tr>
+<td><code>NEXT_PUBLIC_SUPABASE_ANON_KEY</code></td>
+<td>Yes</td>
+<td>Supabase anon/public key</td>
+</tr>
+<tr>
+<td><code>GEMINI_API_KEY</code></td>
+<td>Yes</td>
+<td>Google AI Studio API key</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-grading-letter-grade-scale">7. Grading Letter Grade Scale</h2>
+<table>
+<thead>
+<tr>
+<th>Percentage</th>
+<th>Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>90–100%</td>
+<td>A</td>
+</tr>
+<tr>
+<td>80–89%</td>
+<td>B</td>
+</tr>
+<tr>
+<td>70–79%</td>
+<td>C</td>
+</tr>
+<tr>
+<td>60–69%</td>
+<td>D</td>
+</tr>
+<tr>
+<td>0–59%</td>
+<td>F</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-running-the-system-locally">8. Running the System Locally</h2>
+<pre><code class="language-bash"># 1. Install dependencies
+npm install
+
+# 2. Configure .env.local (see Section 6)
+
+# 3. Run Supabase schema (via Supabase SQL Editor)
+# Open supabase/schema.sql and execute in Supabase dashboard
+
+# 4. Start development server
+npm run dev
+
+# 5. Open in browser
+# http://localhost:3000
+</code></pre>
+<hr />
+<h2 id="9-user-manual-summary">9. User Manual Summary</h2>
+<h3 id="for-educators">For Educators</h3>
+<ol>
+<li><strong>Register</strong> at <code>/register</code> → select "Educator"</li>
+<li><strong>Login</strong> at <code>/login</code></li>
+<li><strong>Create Quiz</strong>: Dashboard → "+ New Quiz" → fill details → add questions → Save</li>
+<li><strong>Publish</strong>: Click "Publish" on any saved quiz</li>
+<li><strong>View Results</strong>: Click "Results" on a published quiz</li>
+<li><strong>Analytics</strong>: Dashboard sidebar → "Grade Reports"</li>
+</ol>
+<h3 id="for-students">For Students</h3>
+<ol>
+<li><strong>Register</strong> at <code>/register</code> → select "Student"</li>
+<li><strong>Login</strong> at <code>/login</code></li>
+<li><strong>Take a Quiz</strong>: Dashboard → click any quiz → "Take Quiz →"</li>
+<li><strong>Answer Questions</strong>: Select options or type responses</li>
+<li><strong>Submit</strong>: Click "Submit Quiz" or let timer auto-submit</li>
+<li><strong>View Results</strong>: After submission → results page with AI feedback</li>
+<li><strong>History</strong>: Dashboard → "My Results"</li>
+</ol>
+    </body>
+    </html>
+    

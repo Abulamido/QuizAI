@@ -1,0 +1,693 @@
+
+    <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+    <head><meta charset='utf-8'><title>Document</title>
+    <style>
+        body { font-family: 'Times New Roman', serif; line-height: 1.6; max-width: 800px; margin: auto; padding: 20px; }
+        h1 { text-align: center; color: #2c3e50; font-size: 24pt; margin-bottom: 20px; }
+        h2 { color: #34495e; border-bottom: 2px solid #34495e; padding-bottom: 5px; margin-top: 30px; font-size: 18pt; }
+        h3 { color: #7f8c8d; margin-top: 20px; font-size: 14pt; }
+        p { margin-bottom: 15px; text-align: justify; }
+        li { margin-bottom: 8px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+        code { background-color: #f4f4f4; padding: 2px 4px; border-radius: 4px; font-family: 'Courier New', monospace; }
+        pre { background-color: #f4f4f4; padding: 15px; border-radius: 8px; overflow-x: auto; border: 1px solid #ddd; }
+        blockquote { border-left: 5px solid #eee; padding-left: 20px; color: #666; font-style: italic; margin-bottom: 20px; }
+        img { max-width: 100%; height: auto; display: block; margin: 20px auto; }
+    </style>
+    </head>
+    <body>
+    <h1 id="chapter-three-methodology">CHAPTER THREE: METHODOLOGY</h1>
+<h2 id="online-quiz-system-with-artificial-intelligence-grading">Online Quiz System with Artificial Intelligence Grading</h2>
+<hr />
+<h2 id="31-introduction">3.1 Introduction</h2>
+<p>This chapter describes the research methodology, system development approach, analytical frameworks, and technical design decisions that guided the creation of the QuizAI system. It presents the system development life cycle model adopted, the system analysis (including requirement specification and use-case modelling), the system design (including architecture, database schema, data flow diagrams, and entity-relationship diagram), and an account of the tools and technologies employed.</p>
+<hr />
+<h2 id="32-research-methodology">3.2 Research Methodology</h2>
+<h3 id="321-nature-of-the-research">3.2.1 Nature of the Research</h3>
+<p>This project is classified as <strong>applied computing research</strong> — its primary aim is to design and construct an artefact (the QuizAI system) that solves a real-world problem (the limitations of existing online assessment systems with respect to AI grading). The research employs a <strong>Design Science Research</strong> (Hevner et al., 2004) paradigm, which holds that the creation and evaluation of an IT artefact constitutes valid, rigorous research when the artefact addresses a significant problem, is properly evaluated, and its design process is communicated clearly.</p>
+<h3 id="322-system-development-methodology-agile-scrum">3.2.2 System Development Methodology: Agile (Scrum)</h3>
+<p>The system was developed using an <strong>Agile Software Development</strong> methodology, particularly the <strong>Scrum</strong> framework (Schwaber &amp; Sutherland, 2020). Agile was chosen over traditional sequential models (Waterfall) for the following reasons:</p>
+<p><strong>Iterative Development:</strong> Rather than attempting to define all requirements upfront, Agile allows requirements to evolve as the system is built and tested. This was essential given the exploratory nature of integrating an LLM grading engine, whose behaviour needed to be iteratively refined.</p>
+<p><strong>Incremental Delivery:</strong> Working software was produced at the end of each sprint, allowing early testing and feedback integration.</p>
+<p><strong>Flexibility:</strong> Emerging insights — for example, the optimal prompt structure for Gemini grading, or the most effective way to present AI feedback to students — could be incorporated without disrupting the overall project plan.</p>
+<p><strong>Suitability for Solo Development:</strong> Scrum's lightweight ceremonies (daily standup adapted to a self-check, sprint review with supervisor) are manageable for a single developer.</p>
+<p>The project was organised into 6 two-week sprints:</p>
+<table>
+<thead>
+<tr>
+<th>Sprint</th>
+<th>Duration</th>
+<th>Focus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Weeks 1–2</td>
+<td>Requirements analysis, technology research, Supabase setup</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Weeks 3–4</td>
+<td>Database schema design, authentication system</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Weeks 5–6</td>
+<td>Quiz builder (admin), quiz listing</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Weeks 7–8</td>
+<td>Quiz-taking interface, timer, auto-save</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Weeks 9–10</td>
+<td>AI grading engine integration, results page</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Weeks 11–12</td>
+<td>Analytics dashboards, testing, documentation</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="33-system-analysis">3.3 System Analysis</h2>
+<h3 id="331-requirements-gathering">3.3.1 Requirements Gathering</h3>
+<p>Requirements were gathered through:</p>
+<ol>
+<li><strong>Literature review</strong>: As documented in Chapter 2, existing systems' limitations informed functional requirements.</li>
+<li><strong>Informal stakeholder consultation</strong>: Discussions with fellow students (prospective users) and academic staff members identified usability priorities and desired features.</li>
+<li><strong>Competitive analysis</strong>: Hands-on evaluation of Google Forms, Kahoot, and Moodle informed requirements.</li>
+</ol>
+<h3 id="332-functional-requirements">3.3.2 Functional Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>FR#</th>
+<th>Requirement</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-01</td>
+<td>System shall support registration and login via email/password</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-02</td>
+<td>System shall support two user roles: Educator and Student</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-03</td>
+<td>Educators shall be able to create quizzes with title, subject, duration, pass mark</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-04</td>
+<td>Educators shall be able to add MCQ, True/False, Short Answer, and Essay questions</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-05</td>
+<td>Educators shall be able to publish or unpublish quizzes</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-06</td>
+<td>Students shall see only published quizzes</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-07</td>
+<td>Students shall be able to start a quiz and record their answers</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-08</td>
+<td>System shall display a real-time countdown timer during quiz</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-09</td>
+<td>System shall auto-submit the quiz when timer expires</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-10</td>
+<td>System shall auto-save student answers as they progress</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>FR-11</td>
+<td>MCQ and T/F answers shall be graded instantly on submission</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-12</td>
+<td>Short answer and essay responses shall be graded by Gemini AI</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-13</td>
+<td>AI grading shall return: score, feedback, strengths, improvements</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-14</td>
+<td>Results shall be immediately accessible to the student after grading</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-15</td>
+<td>Educators shall see all students' results for their quizzes</td>
+<td>High</td>
+</tr>
+<tr>
+<td>FR-16</td>
+<td>Educator dashboard shall display class-level statistics</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>FR-17</td>
+<td>Student dashboard shall display personal score history</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>FR-18</td>
+<td>Educators shall be able to delete quizzes</td>
+<td>Low</td>
+</tr>
+</tbody>
+</table>
+<h3 id="333-non-functional-requirements">3.3.3 Non-Functional Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>NFR#</th>
+<th>Requirement</th>
+<th>Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NFR-01</td>
+<td>System shall load each page in under 3 seconds on standard broadband</td>
+<td>Performance</td>
+</tr>
+<tr>
+<td>NFR-02</td>
+<td>AI grading shall complete within 60 seconds of quiz submission</td>
+<td>Performance</td>
+</tr>
+<tr>
+<td>NFR-03</td>
+<td>Student data shall be accessible only to the student and their educators</td>
+<td>Security</td>
+</tr>
+<tr>
+<td>NFR-04</td>
+<td>All API endpoints shall require authentication before processing requests</td>
+<td>Security</td>
+</tr>
+<tr>
+<td>NFR-05</td>
+<td>Database access shall be governed by Row Level Security policies</td>
+<td>Security</td>
+</tr>
+<tr>
+<td>NFR-06</td>
+<td>The interface shall be usable by non-technical students without training</td>
+<td>Usability</td>
+</tr>
+<tr>
+<td>NFR-07</td>
+<td>The system shall be responsive across desktop and mobile viewports</td>
+<td>Usability</td>
+</tr>
+<tr>
+<td>NFR-08</td>
+<td>The system shall be built on scalable, cloud-hosted infrastructure</td>
+<td>Scalability</td>
+</tr>
+<tr>
+<td>NFR-09</td>
+<td>Source code shall be modular, documented, and version-controlled</td>
+<td>Maintainability</td>
+</tr>
+<tr>
+<td>NFR-10</td>
+<td>The system shall function correctly on Chrome, Firefox, and Edge</td>
+<td>Compatibility</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="34-use-case-modelling">3.4 Use Case Modelling</h2>
+<h3 id="341-actors">3.4.1 Actors</h3>
+<ul>
+<li><strong>Educator (Admin):</strong> A registered user with instructor-level privileges; creates and manages quizzes; views class results.</li>
+<li><strong>Student:</strong> A registered user with learner-level privileges; takes quizzes; views personal results.</li>
+<li><strong>Gemini AI:</strong> External AI service that receives question-answer pairs and returns grading results.</li>
+<li><strong>Supabase:</strong> Backend-as-a-service providing database, authentication, and storage.</li>
+</ul>
+<h3 id="342-use-cases">3.4.2 Use Cases</h3>
+<p><strong>Educator Use Cases:</strong></p>
+<table>
+<thead>
+<tr>
+<th>UC#</th>
+<th>Use Case</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UC-01</td>
+<td>Register as Educator</td>
+<td>Submit full name, email, password, select Educator role</td>
+</tr>
+<tr>
+<td>UC-02</td>
+<td>Login</td>
+<td>Authenticate with email and password</td>
+</tr>
+<tr>
+<td>UC-03</td>
+<td>Create Quiz</td>
+<td>Enter quiz metadata and add questions</td>
+</tr>
+<tr>
+<td>UC-04</td>
+<td>Publish Quiz</td>
+<td>Toggle a quiz to published (visible to students)</td>
+</tr>
+<tr>
+<td>UC-05</td>
+<td>Unpublish Quiz</td>
+<td>Remove quiz from student view</td>
+</tr>
+<tr>
+<td>UC-06</td>
+<td>Delete Quiz</td>
+<td>Permanently remove a quiz and all attempts</td>
+</tr>
+<tr>
+<td>UC-07</td>
+<td>View Quiz Results</td>
+<td>See all student submissions and scores for a quiz</td>
+</tr>
+<tr>
+<td>UC-08</td>
+<td>View Grade Report</td>
+<td>See all graded attempts across all quizzes</td>
+</tr>
+<tr>
+<td>UC-09</td>
+<td>View Student Roster</td>
+<td>See list of registered students</td>
+</tr>
+<tr>
+<td>UC-10</td>
+<td>Logout</td>
+<td>Terminate authenticated session</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Student Use Cases:</strong></p>
+<table>
+<thead>
+<tr>
+<th>UC#</th>
+<th>Use Case</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UC-11</td>
+<td>Register as Student</td>
+<td>Submit full name, email, password, select Student role</td>
+</tr>
+<tr>
+<td>UC-12</td>
+<td>Login</td>
+<td>Authenticate with email and password</td>
+</tr>
+<tr>
+<td>UC-13</td>
+<td>View Available Quizzes</td>
+<td>See list of published quizzes</td>
+</tr>
+<tr>
+<td>UC-14</td>
+<td>Start Quiz</td>
+<td>Begin a quiz attempt; timer starts</td>
+</tr>
+<tr>
+<td>UC-15</td>
+<td>Answer Question</td>
+<td>Select option (MCQ/T-F) or type response (short/essay)</td>
+</tr>
+<tr>
+<td>UC-16</td>
+<td>Navigate Questions</td>
+<td>Move between questions using navigator</td>
+</tr>
+<tr>
+<td>UC-17</td>
+<td>Submit Quiz</td>
+<td>Manually submit quiz or auto-submit on timer expiry</td>
+</tr>
+<tr>
+<td>UC-18</td>
+<td>View Results</td>
+<td>View score, grade, and per-question AI feedback</td>
+</tr>
+<tr>
+<td>UC-19</td>
+<td>Logout</td>
+<td>Terminate authenticated session</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="35-system-architecture">3.5 System Architecture</h2>
+<h3 id="351-overall-architecture">3.5.1 Overall Architecture</h3>
+<p>The QuizAI system employs a <strong>three-tier client-server architecture</strong> deployed on cloud services:</p>
+<pre><code>┌──────────────────────────────────────────────────────┐
+│                   CLIENT TIER                         │
+│  Browser (HTML/CSS/JavaScript via Next.js React)     │
+│  - Landing Page       - Auth Pages                   │
+│  - Admin Dashboard    - Student Dashboard            │
+│  - Quiz Builder       - Quiz-Taking Interface        │
+│  - Results Page       - Analytics Views              │
+└───────────────────┬──────────────────────────────────┘
+                    │ HTTPS Requests
+┌───────────────────▼──────────────────────────────────┐
+│                APPLICATION TIER                       │
+│      Next.js 14 App Router (Server Components &amp;      │
+│              API Routes — Node.js Runtime)            │
+│                                                      │
+│  /api/quizzes    /api/attempts    /api/grade          │
+│  [Quiz CRUD]     [Attempt mgmt]   [AI Grading]       │
+└───┬───────────────────────────────────┬──────────────┘
+    │ SQL (Supabase PostgREST)          │ HTTPS (Gemini API)
+┌───▼──────────────────┐    ┌──────────▼───────────────┐
+│    DATA TIER         │    │    AI SERVICE TIER        │
+│  Supabase            │    │  Google Generative AI     │
+│  (PostgreSQL + RLS)  │    │  (Gemini 1.5 Flash)      │
+│                      │    │                          │
+│  - profiles          │    │  - Grade short answers   │
+│  - quizzes           │    │  - Grade essays          │
+│  - questions         │    │  - Generate feedback     │
+│  - quiz_attempts     │    │                          │
+│  - attempt_answers   │    │                          │
+└──────────────────────┘    └──────────────────────────┘
+</code></pre>
+<h3 id="352-client-server-communication">3.5.2 Client-Server Communication</h3>
+<p>The client (browser) communicates with the Next.js application tier via:
+- <strong>Server-Rendered Pages</strong> (Next.js App Router): Initial page HTML rendered on server, reducing time-to-first-render
+- <strong>API Routes</strong> (<code>/api/*</code>): RESTful JSON endpoints consumed by client-side React components for dynamic operations (CRUD, grading trigger)
+- <strong>Supabase Client SDK</strong>: Direct browser-to-Supabase connection (via the <code>@supabase/ssr</code> package) for real-time data subscriptions and database queries, governed by Row Level Security</p>
+<hr />
+<h2 id="36-database-design">3.6 Database Design</h2>
+<h3 id="361-entity-relationship-diagram-erd">3.6.1 Entity-Relationship Diagram (ERD)</h3>
+<p>The database comprises five primary entities. Their attributes and relationships are described below:</p>
+<p><strong>PROFILES</strong>
+- <code>id (PK, FK → auth.users.id)</code>: UUID
+- <code>email</code>: TEXT
+- <code>full_name</code>: TEXT
+- <code>role</code>: TEXT ENUM ('student', 'admin')
+- <code>created_at</code>: TIMESTAMPTZ</p>
+<p><strong>QUIZZES</strong>
+- <code>id (PK)</code>: UUID
+- <code>title</code>: TEXT
+- <code>description</code>: TEXT (nullable)
+- <code>subject</code>: TEXT (nullable)
+- <code>created_by (FK → profiles.id)</code>: UUID
+- <code>duration_minutes</code>: INTEGER
+- <code>total_marks</code>: INTEGER
+- <code>pass_mark</code>: INTEGER (1–100)
+- <code>is_published</code>: BOOLEAN
+- <code>created_at</code>: TIMESTAMPTZ</p>
+<p><strong>QUESTIONS</strong>
+- <code>id (PK)</code>: UUID
+- <code>quiz_id (FK → quizzes.id)</code>: UUID
+- <code>question_text</code>: TEXT
+- <code>question_type</code>: TEXT ENUM ('mcq', 'short_answer', 'essay', 'true_false')
+- <code>options</code>: JSONB (nullable, for MCQ: [{id, text, isCorrect}])
+- <code>correct_answer</code>: TEXT (nullable)
+- <code>model_answer</code>: TEXT (nullable)
+- <code>rubric</code>: TEXT (nullable)
+- <code>max_score</code>: INTEGER
+- <code>order_index</code>: INTEGER</p>
+<p><strong>QUIZ_ATTEMPTS</strong>
+- <code>id (PK)</code>: UUID
+- <code>quiz_id (FK → quizzes.id)</code>: UUID
+- <code>student_id (FK → profiles.id)</code>: UUID
+- <code>started_at</code>: TIMESTAMPTZ
+- <code>submitted_at</code>: TIMESTAMPTZ (nullable)
+- <code>total_score</code>: NUMERIC
+- <code>total_possible</code>: NUMERIC
+- <code>percentage</code>: NUMERIC
+- <code>grade</code>: TEXT ENUM ('A', 'B', 'C', 'D', 'F')
+- <code>status</code>: TEXT ENUM ('in_progress', 'submitted', 'graded')</p>
+<p><strong>ATTEMPT_ANSWERS</strong>
+- <code>id (PK)</code>: UUID
+- <code>attempt_id (FK → quiz_attempts.id)</code>: UUID
+- <code>question_id (FK → questions.id)</code>: UUID
+- <code>student_answer</code>: TEXT
+- <code>score</code>: NUMERIC
+- <code>max_score</code>: NUMERIC
+- <code>feedback</code>: TEXT (nullable)
+- <code>strengths</code>: JSONB (nullable)
+- <code>improvements</code>: JSONB (nullable)
+- <code>is_correct</code>: BOOLEAN (nullable)
+- <code>graded_by</code>: TEXT ENUM ('ai', 'manual', 'auto', 'pending')</p>
+<p><strong>Entity Relationships:</strong>
+- One PROFILE → Many QUIZZES (educator creates quizzes)
+- One QUIZ → Many QUESTIONS
+- One QUIZ → Many QUIZ_ATTEMPTS
+- One PROFILE → Many QUIZ_ATTEMPTS (student attempts quizzes)
+- One QUIZ_ATTEMPT → Many ATTEMPT_ANSWERS
+- One QUESTION → Many ATTEMPT_ANSWERS (across attempts)</p>
+<h3 id="362-database-security-row-level-security-rls">3.6.2 Database Security: Row Level Security (RLS)</h3>
+<p>Supabase's Row Level Security feature enforces data isolation at the database layer, independent of the application layer. This provides a defence-in-depth security posture. Key policies include:</p>
+<ul>
+<li><strong>Quizzes</strong>: Students can only SELECT quizzes where <code>is_published = true</code> OR where <code>created_by = auth.uid()</code> (educators see their own drafts)</li>
+<li><strong>Quiz Attempts</strong>: Students can only SELECT/INSERT/UPDATE their own attempts (<code>student_id = auth.uid()</code>)</li>
+<li><strong>Attempt Answers</strong>: Students can only access answers belonging to their own attempts</li>
+<li><strong>Profiles</strong>: All authenticated users can read profiles (for name display); only the profile owner can update</li>
+</ul>
+<hr />
+<h2 id="37-data-flow-diagrams">3.7 Data Flow Diagrams</h2>
+<h3 id="371-level-0-dfd-context-diagram">3.7.1 Level 0 DFD (Context Diagram)</h3>
+<pre><code>                    ┌──────────────────────────────┐
+    [EDUCATOR]      │                              │     [STUDENT]
+     Quiz Data  →   │      QUIZAI SYSTEM           │  ← Quiz Attempt
+     Publish Cmd    │                              │   → Results + Feedback
+                    │                              │
+                    └──────────────────────────────┘
+                               ↕ AI Requests/Responses
+                         [GOOGLE GEMINI AI SERVICE]
+</code></pre>
+<h3 id="372-level-1-dfd">3.7.2 Level 1 DFD</h3>
+<p><strong>Process 1.0 — User Authentication</strong>
+- Input: Email, password, role
+- Process: Validate credentials via Supabase Auth; create/fetch profile
+- Output: Auth session token; redirect to role-appropriate dashboard</p>
+<p><strong>Process 2.0 — Quiz Management (Educator)</strong>
+- Input: Quiz metadata; question data
+- Process: Validate, store in quizzes + questions tables
+- Output: Quiz ID; confirmation; quiz listing updated</p>
+<p><strong>Process 3.0 — Quiz Attempt (Student)</strong>
+- Input: Student selection (quiz) and answers
+- Process: Create attempt record; save answers; enforce timer
+- Output: Attempt ID; auto-saved answers; timer display</p>
+<p><strong>Process 4.0 — AI Grading Engine</strong>
+- Input: Attempt ID → answers + questions from DB
+- Process: MCQ/T-F → rule-based comparison; Short/Essay → Gemini API call
+- Output: Per-question scores + feedback → stored in attempt_answers; aggregate score → stored in quiz_attempts</p>
+<p><strong>Process 5.0 — Results Presentation</strong>
+- Input: Attempt ID → graded attempt_answers
+- Process: Fetch all answers, format score display and feedback
+- Output: Results page with score, grade, per-question feedback</p>
+<p><strong>Process 6.0 — Analytics</strong>
+- Input: quiz_id (educator); student_id (student)
+- Process: Aggregate statistics from quiz_attempts
+- Output: Dashboard stats (avg, pass rate, distribution)</p>
+<hr />
+<h2 id="38-ai-grading-design">3.8 AI Grading Design</h2>
+<h3 id="381-short-answer-grading-pipeline">3.8.1 Short Answer Grading Pipeline</h3>
+<p>The short answer grading flow is as follows:</p>
+<ol>
+<li><strong>Trigger</strong>: Student submits quiz → <code>/api/grade</code> receives <code>{attemptId, quizId}</code></li>
+<li><strong>Fetch</strong>: API fetches all answers for the attempt, joined with their questions</li>
+<li><strong>Route</strong>: For each answer, branch on <code>question_type</code>:</li>
+<li><code>mcq</code> / <code>true_false</code> → Rule-based grader</li>
+<li><code>short_answer</code> → Gemini short-answer grader</li>
+<li><code>essay</code> → Gemini essay grader</li>
+<li><strong>Prompt Construction</strong> (short answer):</li>
+</ol>
+<pre><code>You are an expert academic grader. Grade the following student answer.
+
+Question: {question_text}
+Model Answer: {model_answer}
+Rubric (if provided): {rubric}
+Student Answer: {student_answer}
+Maximum Score: {max_score}
+
+Respond ONLY with JSON:
+{
+  &quot;score&quot;: &lt;number 0 to {max_score}&gt;,
+  &quot;feedback&quot;: &quot;&lt;2-3 sentence feedback&gt;&quot;,
+  &quot;strengths&quot;: [&quot;&lt;strength 1&gt;&quot;, &quot;&lt;strength 2&gt;&quot;],
+  &quot;improvements&quot;: [&quot;&lt;improvement 1&gt;&quot;, &quot;&lt;improvement 2&gt;&quot;]
+}
+</code></pre>
+<ol>
+<li><strong>Parse Response</strong>: Extract JSON from Gemini text response; validate score bounds</li>
+<li><strong>Store</strong>: Write <code>{score, feedback, strengths, improvements, graded_by: 'ai'}</code> to <code>attempt_answers</code></li>
+<li><strong>Aggregate</strong>: Sum scores; compute percentage and letter grade; update <code>quiz_attempts</code></li>
+</ol>
+<h3 id="382-essay-grading-rubric">3.8.2 Essay Grading Rubric</h3>
+<p>Essays are graded using a four-criterion rubric embedded in the Gemini prompt:</p>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Weight</th>
+<th>Aspects Evaluated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content &amp; Knowledge</td>
+<td>40%</td>
+<td>Accuracy, relevance, completeness</td>
+</tr>
+<tr>
+<td>Structure &amp; Organisation</td>
+<td>20%</td>
+<td>Introduction, body, conclusion; paragraph transitions</td>
+</tr>
+<tr>
+<td>Critical Analysis</td>
+<td>20%</td>
+<td>Depth of argument, evidence, counterpoint consideration</td>
+</tr>
+<tr>
+<td>Language &amp; Expression</td>
+<td>20%</td>
+<td>Clarity, grammar, vocabulary, coherence</td>
+</tr>
+</tbody>
+</table>
+<h3 id="383-rationale-for-gemini-15-flash">3.8.3 Rationale for Gemini 1.5 Flash</h3>
+<p>Gemini 1.5 Flash was selected as the AI grading model for the following reasons:
+- <strong>Accuracy</strong>: Achieves near-human performance on academic reasoning benchmarks
+- <strong>Speed</strong>: "Flash" variant optimised for low latency (average grading response: 3–8 seconds per answer)
+- <strong>Cost</strong>: Google AI Studio provides a free usage tier sufficient for educational-scale deployments
+- <strong>Reliability</strong>: Google's production infrastructure provides robust API availability
+- <strong>Context window</strong>: 1 million token context window supports grading long essays
+- <strong>Safety</strong>: Built-in content moderation prevents inappropriate content in feedback</p>
+<hr />
+<h2 id="39-technology-stack-justification">3.9 Technology Stack Justification</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Web Framework</td>
+<td>Next.js 14</td>
+<td>Server-side rendering, API routes in one framework; industry standard; strong TypeScript support</td>
+</tr>
+<tr>
+<td>Styling</td>
+<td>Vanilla CSS</td>
+<td>Maximum flexibility and control; no external CSS framework dependency; custom design system</td>
+</tr>
+<tr>
+<td>Database</td>
+<td>Supabase (PostgreSQL)</td>
+<td>Managed PostgreSQL with built-in auth, RLS, and real-time capabilities; generous free tier</td>
+</tr>
+<tr>
+<td>Authentication</td>
+<td>Supabase Auth</td>
+<td>Tightly integrated with database RLS; supports email/password and OAuth</td>
+</tr>
+<tr>
+<td>AI Grading</td>
+<td>Google Gemini 1.5 Flash</td>
+<td>State-of-the-art LLM with API access; free tier; optimised for educational reasoning tasks</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>TypeScript</td>
+<td>Type safety reduces runtime errors; better IDE tooling; self-documenting code</td>
+</tr>
+<tr>
+<td>Deployment</td>
+<td>Local dev (npm run dev)</td>
+<td>Simplifies academic demo; Next.js supports one-command deployment to Vercel for production</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="310-security-design">3.10 Security Design</h2>
+<p>The system employs defence-in-depth security:</p>
+<p><strong>Layer 1 — Network</strong>: HTTPS for all client-server and API communications</p>
+<p><strong>Layer 2 — Authentication</strong>: Supabase Auth issues JWTs (JSON Web Tokens) that expire and rotate; all API routes verify the JWT before processing requests</p>
+<p><strong>Layer 3 — Application</strong>: API route handlers check user roles before performing privileged operations (e.g., only users with <code>role = 'admin'</code> can create quizzes)</p>
+<p><strong>Layer 4 — Database</strong>: Supabase Row Level Security policies enforce data isolation at the database level; even if application code had a bug, the database would refuse to return unauthorised data</p>
+<p><strong>Layer 5 — Environment</strong>: API keys (Gemini, Supabase service key) stored in <code>.env.local</code> files, never committed to version control or exposed to the client</p>
+<hr />
+<h2 id="311-testing-strategy">3.11 Testing Strategy</h2>
+<p>The following testing approach was applied:</p>
+<p><strong>Unit Testing:</strong>
+- The Gemini grading functions were unit-tested by supplying known question-answer pairs and verifying that returned scores were within expected ranges
+- Database trigger for automatic profile creation was tested with new user registrations</p>
+<p><strong>Integration Testing:</strong>
+- The full grading pipeline was tested end-to-end: quiz creation → student attempt → submission → AI grading → results retrieval
+- Authentication flows were tested for correct role detection and routing</p>
+<p><strong>User Acceptance Testing (UAT):</strong>
+- 5 student volunteers were recruited to use the system
+- Task completion rate and satisfaction were recorded
+- AI grading scores were compared against researcher-generated expected scores for 20 short-answer and 10 essay cases
+- Mean correlation between AI scores and expected scores was calculated</p>
+<p><strong>Security Testing:</strong>
+- Attempted unauthorised access (student accessing admin endpoints) verified to be rejected with 403 errors
+- RLS policies verified by attempting direct SQL queries to return another user's data</p>
+<hr />
+<h2 id="312-summary">3.12 Summary</h2>
+<p>This chapter documented the complete methodology guiding the development of the QuizAI system. The key design decisions were:</p>
+<ol>
+<li><strong>Agile (Scrum)</strong> was selected as the development methodology for its iterative, flexible nature.</li>
+<li>The system follows a <strong>three-tier architecture</strong> with a clear separation between client, application, and data tiers.</li>
+<li>The <strong>database design</strong> uses five related tables with carefully designed RLS policies for security.</li>
+<li>The <strong>AI grading design</strong> uses structured prompts to Gemini 1.5 Flash, routing MCQ questions to a rule-based grader and short/essay questions to the LLM.</li>
+<li><strong>Security is implemented at four distinct layers</strong> for robustness.</li>
+<li><strong>Testing</strong> combines unit, integration, and user acceptance methods.</li>
+</ol>
+<p>Chapter Four will present the implementation details and results.</p>
+<hr />
+<h2 id="references">References</h2>
+<p>Hevner, A. R., et al. (2004). Design science in information systems research. <em>MIS Quarterly</em>, 28(1), 75–105.</p>
+<p>Schwaber, K., &amp; Sutherland, J. (2020). <em>The Scrum Guide</em>. https://scrumguides.org/</p>
+<p>Google. (2024). <em>Gemini API - Google AI Studio</em>. https://ai.google.dev</p>
+    </body>
+    </html>
+    
