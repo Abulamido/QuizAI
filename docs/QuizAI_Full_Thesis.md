@@ -10,12 +10,12 @@
 
 ---
 
-**Submitted by:** [Your Full Name]
-**Matriculation Number:** [Your Matric Number]
-**Department:** Computer Science / Information Technology
-**Institution:** [Your University Name]
+**Submitted by:** Adamu Yakubu
+**Matriculation Number:** CSA/2021/20169
+**Department:** Computer Science and Artificial Intelligence
+**Institution:** Federal University Dutsin Ma
 **Level:** Final Year (400 Level)
-**Supervisor:** [Supervisor's Name]
+**Supervisor:** Mr. Abdulmuminu Yusuf
 **Date:** April 2025
 
 ---
